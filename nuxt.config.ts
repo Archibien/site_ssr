@@ -11,7 +11,7 @@ export default defineNuxtConfig({
   },
   routeRules: {
     "/": { isr: 86400 }, // homepage cached 24h
-    "/agency/**": {
+    "/agence/**": {
       isr: 86400, // regenerate at most once per 24h
     },
   },
