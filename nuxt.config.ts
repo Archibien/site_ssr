@@ -4,14 +4,15 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   runtimeConfig: {
     apiToken: "", // private
+    revalidateSecret: "", // private
     public: {
       apiBase: "",
     },
   },
   routeRules: {
     "/": { isr: 86400 }, // homepage cached 24h
-    // "/": { prerender: true },
-    // "/agency/**": { isr: 86400 },
-    // "/project/**": { isr: 86400 },
+    "/agency/**": {
+      isr: 86400, // regenerate at most once per 24h
+    },
   },
 });
