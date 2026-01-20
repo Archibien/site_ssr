@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h2>Agences à l’honneur</h2>
+    <h2>Test Home :</h2>
 
     <div v-if="agencies">
       <div v-for="agency in agencies" :key="agency.id">
