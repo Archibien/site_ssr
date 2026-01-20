@@ -9,6 +9,9 @@ export default defineNuxtConfig({
       apiBase: "",
     },
   },
+  nitro: {
+    preset: "vercel",
+  },
   routeRules: {
     "/": { isr: 86400 }, // homepage cached 24h
     "/agence/**": {
