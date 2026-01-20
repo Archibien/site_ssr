@@ -15,4 +15,11 @@ export default defineNuxtConfig({
       isr: 86400, // regenerate at most once per 24h
     },
   },
+  nitro: {
+    vercel: {
+      config: {
+        bypassToken: "bJ8bbyI9p/suIZV1CeBXvOWsynhaS616IqW5BrNDLWU=",
+      },
+    },
+  },
 });
