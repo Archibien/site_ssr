@@ -28,7 +28,7 @@ if (error.value) {
   });
 }
 
-const renderedAt = new Date().toISOString();
+const renderedAt = useState("rendered-at", () => new Date().toISOString());
 </script>
 
 <template>
