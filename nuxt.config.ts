@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     apiSecret: '', // private
     public: {
       apiBase: '',
+      googleMapsApiKey: '',
     },
   },
   experimental: {
