@@ -4,10 +4,6 @@ import { departments } from '~/data/departments'
 import type { Department } from '~/types/places'
 import { useIntersectionObserver } from '@vueuse/core'
 
-function boundsToBbox(bounds: { north: number; south: number; east: number; west: number }) {
-  return `${bounds.west},${bounds.south},${bounds.east},${bounds.north}`
-}
-
 const route = useRoute()
 const code = route.params?.department.split('-')[0]
 const dep = departments[code] as Department
@@ -36,20 +32,6 @@ const { data } = await useAsyncData<DepResponse>(
 ------------------------ */
 const mapContainer = ref<HTMLElement | null>(null)
 const mapVisible = ref(false)
-const bbox = ref(boundsToBbox(dep.bounds))
-
-/* -----------------------
-   Pins fetch (client-only)
------------------------- */
-const {
-  data: pins,
-  refresh: refreshPins,
-  pending,
-} = useFetch('/api/map-pins', {
-  server: false, // 🚨 REQUIRED
-  immediate: false, // do NOT fetch until visible
-  query: { bbox },
-})
 
 /* -----------------------
    Load map only when visible
@@ -59,27 +41,10 @@ useIntersectionObserver(
   ([entry]) => {
     if (entry.isIntersecting) {
       mapVisible.value = true
-      refreshPins() // initial fetch
     }
   },
   { threshold: 0.1 }
 )
-
-/* -----------------------
-   Re-fetch when bbox changes
------------------------- */
-watch(bbox, () => {
-  if (mapVisible.value) {
-    refreshPins()
-  }
-})
-
-/* -----------------------
-   Handler from map component
------------------------- */
-function onBoundsChanged(newBounds: { north: number; south: number; east: number; west: number }) {
-  bbox.value = boundsToBbox(newBounds)
-}
 </script>
 
 <template>
@@ -103,12 +68,7 @@ function onBoundsChanged(newBounds: { north: number; south: number; east: number
   <div>
     <div ref="mapContainer" style="min-height: 400px">
       <ClientOnly>
-        <MapView
-          v-if="mapVisible"
-          :pins="pins"
-          :loading="pending"
-          :initial-bounds="dep.bounds"
-          @bounds-changed="bbox = $event" />
+        <MapView v-if="mapVisible" :initial-bounds="dep.bounds" />
       </ClientOnly>
     </div>
   </div>
