@@ -11,9 +11,9 @@ export default defineEventHandler(async (event) => {
   try {
     return await $fetch(`${config.public.apiBase}/agency/`, {
       query,
-      //   headers: {
-      //     Authorization: `Token ${config.apiToken}`,
-      //   },
+      headers: {
+        "X-Public-Api-Key": config.apiSecret,
+      },
     });
   } catch (error: any) {
     if (error?.status === 410) {

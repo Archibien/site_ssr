@@ -1,0 +1,263 @@
+[
+  {
+    "name": "Le Figaro",
+    "logo": {
+      "url_square": "logo-lefigaro-square.png",
+      "url": "logo-lefigaro.png",
+      "alt": "Logo du Figaro, journal Français.",
+      "title": "Archibien sur le Figaro en 2019"
+    },
+    "description": "Cette start-up organise des concours d’architectes pour les particuliers",
+    "url": "https://immobilier.lefigaro.fr/article/cette-start-up-organise-des-concours-d-architectes-pour-les-particuliers_b750c1ba-9325-11e9-bbe0-3557fdf7f672/",
+    "main": true
+  },
+  {
+    "name": "Europe 1",
+    "logo": {
+      "url_square": "Logo-Europe-1-square.png",
+      "url": "Logo-Europe-1.png",
+      "alt": "Logo d'Europe 1, radio Française.",
+      "title": "Archibien sur Europe 1"
+    },
+    "description": "La solution : Archibien, la start-up qui vous aide à trouver l’architecte qui vous convient",
+    "url": "https://www.europe1.fr/emissions/les-trophees-de-lavenir/la-solution-archibien-la-start-up-qui-vous-aide-a-trouver-larchitecte-qui-vous-convient-3889418",
+    "main": true
+  },
+  {
+    "name": "RTL",
+    "logo": {
+      "url_square": "Logo-RTL-square.png",
+      "url": "Logo-RTL.png",
+      "alt": "Logo de RTL",
+      "title": "Archibien à la radio sur RTL en 2018"
+    },
+    "description": "Comment bien choisir un architecte sur Internet ?",
+    "url": "https://www.rtl.fr/actu/conso/comment-bien-choisir-un-architecte-sur-internet-7791681784",
+    "main": true
+  },
+  {
+    "name": "Ouest France",
+    "logo": {
+      "url_square": "logo-ouest-france-square.png",
+      "url": "logo-ouest-france.png",
+      "alt": "Logo de Ouest France",
+      "title": "Archibien dans la presse Ouest France en 2017"
+    },
+    "description": "Archibien : l'architecture depuis chez soi",
+    "url": "https://www.ouest-france.fr/bretagne/morbihan/start-archibien-l-architecture-depuis-chez-soi-5342198",
+    "main": true
+  },
+  {
+    "name": "Libération",
+    "logo": {
+      "url_square": "Logo-Liberation-square.png",
+      "url": "Logo-Liberation.png",
+      "alt": "Logo de Liberation, journal Français.",
+      "title": "Archibien dans la presse Libération en 2019"
+    },
+    "description": "Du neuf dans le monde des agents immobiliers",
+    "url": "https://www.liberation.fr/france/2019/11/14/du-neuf-dans-le-monde-des-agents-immobiliers_1763081",
+    "main": true
+  },
+  {
+    "name": "Le Moniteur",
+    "logo": {
+      "url_square": "Logo-Le-Moniteur-square.png",
+      "url": "",
+      "alt": "Logo du Moniteur",
+      "title": "Archibien sur Le Moniteur"
+    },
+    "description": "Démocratiser l'architecture en organisant des concours",
+    "url": "https://www.lemoniteur.fr/article/des-start-up-pour-democratiser-l-architecture.2079093",
+    "main": false
+  },
+  {
+    "name": "BFM Business",
+    "logo": {
+      "url_square": "Logo-BFM-square.jpg",
+      "url": "Logo_BFM.jpg",
+      "alt": "Logo de BFM Business",
+      "title": "Archibien à la télé sur BMF TV en 2018"
+    },
+    "description": "Le Pitch: Les Petits Prödiges VS Archibien",
+    "url": "https://www.youtube.com/watch?v=jBdIiA-YSZs",
+    "main": true
+  },
+  {
+    "name": "Ideat",
+    "logo": {
+      "url_square": "Logo-Ideat-square.png",
+      "alt": "Logo d'Ideat",
+      "title": "Archibien sur Ideat en 2018"
+    },
+    "description": "Paris : la Laiterie La Chapelle, une aventure architecturale",
+    "url": "https://ideat.thegoodhub.com/2018/10/12/paris-la-laiterie-la-chapelle-une-aventure-architecturale/",
+    "main": false
+  },
+  {
+    "name": "La Tribune",
+    "logo": {
+      "url_square": "Logo-La-Tribune-square.jpg",
+      "alt": "Logo de la Tribune",
+      "title": "Archibien dans la Tribune"
+    },
+    "description": "Les architectes entrent dans la tech",
+    "url": "https://www.latribune.fr/entreprises-finance/industrie/biens-d-equipement-btp-immobilier/les-architectes-entrent-dans-la-tech-788104.html",
+    "main": false
+  },
+  {
+    "name": "Ouest France",
+    "logo": {
+      "url_square": "logo-ouest-france-square.png",
+      "url": "logo-ouest-france.png",
+      "alt": "Logo de Ouest France",
+      "title": "Archibien dans la presse Ouest France en 2018"
+    },
+    "description": "Archibien : pour trouver le bon architecte",
+    "url": "https://www.ouest-france.fr/bretagne/rennes-35000/archibien-pour-trouver-le-bon-architecte-5723838",
+    "main": true
+  },
+  {
+    "name": "Se Loger",
+    "logo": {
+      "url_square": "Logo-Seloger-square.png",
+      "alt": "Logo de Se Loger",
+      "title": "Archibien dans Se Loger en 2018"
+    },
+    "description": "Avant/après : Une maison bretonne des années 60 remise au goût du jour !",
+    "url": "https://edito.seloger.com/lifestyle/visite-privee/avant-apres-une-maison-bretonne-des-annees-60-remise-au-gout-du-jour-interview-26553.html",
+    "main": false
+  },
+  {
+    "name": "LCL",
+    "logo": {
+      "url_square": "Logo-LCL-square.jpg",
+      "alt": "Logo de LCL",
+      "title": "Archibien sur LCL en 2019"
+    },
+    "description": "La preuve par trois",
+    "url": "https://www.lcl.fr/banque-privee/actualites/autres-horizons/la-preuve-par-trois-archibien",
+    "main": false
+  },
+  {
+    "name": "DestinationImmo",
+    "logo": {
+      "url_square": "Logo-destination-immo-square.jpg",
+      "alt": "Logo de DestinationImmo",
+      "title": "Archibien sur DestinationImmo en 2020"
+    },
+    "description": "Un site de Superimmo.com",
+    "url": "https://www.destinationimmo.com/article-archibien-pour-choisir-le-bon-architecte",
+    "main": false
+  },
+  {
+    "name": "France Bleu",
+    "logo": {
+      "url_square": "Logo-France-Bleu-square.png",
+      "alt": "Logo de France Bleu",
+      "title": "Archibien sur France Bleu en 2018"
+    },
+    "description": "C'est ma boîte !",
+    "url": "https://www.francebleu.fr/emissions/c-est-ma-boite/loire-ocean/archibien-nantes",
+    "main": false
+  },
+  {
+    "name": "Côté Maison",
+    "logo": {
+      "url_square": "Logo-Cote-Maison-square.png",
+      "alt": "Logo de Côté Maison",
+      "title": "Archibien dans Côté Maison en 2018"
+    },
+    "description": "Avant/après : un ancien cabinet de médecin transformé en cocon familial",
+    "url": "https://www.cotemaison.fr/maison-famille/diaporama/maison-quimper-un-cabinet-de-medecin-renove-en-maison-familiale_31070.html",
+    "main": false
+  },
+  {
+    "name": "Maison à Part",
+    "logo": {
+      "url_square": "Logo-Maison-a-Part-square.jpg",
+      "alt": "Logo de Maison à Part",
+      "title": "Archibien dans Maison à Part en "
+    },
+    "description": "Cette petite maison bretonne s'est métamorphosée en villa avec vue sur mer",
+    "url": "https://www.maisonapart.com/edito/construire-renover/renovation-extension/cette-petite-maison-bretonne-s-est-metamorphosee-e-12456.php",
+    "main": false
+  },
+  {
+    "name": "Radio Immo",
+    "logo": {
+      "url_square": "Logo-Radio-Immo-square.png",
+      "alt": "Logo de Radio Immo",
+      "title": "Archibien à la radio sur Radio Immo en 2018"
+    },
+    "description": "Simon Jézéquel - ARCHIBIEN",
+    "url": "https://radio.immo/broadcast/128984-Simon-JEZEQUEL-ARCHIBIEN",
+    "main": false
+  },
+  {
+    "name": "Archilovers",
+    "logo": {
+      "url_square": "Logo-Archilovers-square.gif",
+      "alt": "Logo de Archilovers",
+      "title": "Archibien sur Archilovers en 2018"
+    },
+    "description": "Une laiterie dans Paris",
+    "url": "https://www.archilovers.com/projects/230629/une-laiterie-dans-paris.html",
+    "main": false
+  },
+  {
+    "name": "Maddyness",
+    "logo": {
+      "url_square": "Logo-Maddyness-square.jpg",
+      "alt": "Logo de Maddyness",
+      "title": "Archibien sur Maddyness en 2018"
+    },
+    "description": "Archibien - Maddypitch",
+    "url": "https://www.maddyness.com/2018/07/10/archibien-maddypitch/",
+    "main": false
+  },
+  {
+    "name": "Espaces Atypiques",
+    "logo": {
+      "url_square": "Logo-Espaces-Atypiques-square.png",
+      "alt": "Logo d'Espaces Atypiques",
+      "title": "Archibien sur Espaces Atypiques en 2017"
+    },
+    "description": "Ils nous inspirent",
+    "url": "https://www.espaces-atypiques.com/ils-nous-inspirent/ils-nous-inspirent-le-duo-darchitectes-initiateurs-de-la-plateforme-archibien/",
+    "main": false
+  },
+  {
+    "name": "Espaces Atypiques",
+    "logo": {
+      "url_square": "Logo-Espaces-Atypiques-square.png",
+      "alt": "Logo d'Espaces Atypiques",
+      "title": "Archibien dans le magazine Espaces Atypiques en 2022"
+    },
+    "description": "Archibien dans le magazine",
+    "url": "https://fr.calameo.com/read/006549306bdefdf877f24?authid=rWpik4p5KcQx",
+    "main": false
+  },
+  {
+    "name": "MySweet Immo",
+    "logo": {
+      "url_square": "Logo-MySweet-Immo-square.png",
+      "alt": "Logo de MySweet Immo",
+      "title": "Archibien sur MySweet Immo en 2019"
+    },
+    "description": "Produire du fromage à Paris, un pari réussi grâce à Archibien",
+    "url": "https://www.mysweetimmo.com/2019/08/04/produire-du-fromage-a-paris-un-pari-reussi-grace-a-archibien/",
+    "main": false
+  },
+  {
+    "name": "Le Parisien",
+    "logo": {
+      "url_square": "Logo-Le-Parisien-square.png",
+      "alt": "Logo de Le Parisien",
+      "title": "Archibien dans le Parisien en 2020"
+    },
+    "description": "Trouvez facilement l'architecte qui convient pour vos travaux",
+    "url": "https://www.leparisien.fr/immobilier/avec-archibien-trouvez-facilement-l-architecte-qui-convient-pour-vos-travaux-09-01-2020-8232228.php",
+    "main": false
+  }
+]

@@ -10,7 +10,11 @@ export default defineEventHandler(async () => {
   let lastmods: { agencies?: string } = {};
 
   try {
-    lastmods = await $fetch(`${apiBase}/sitemap/lastmod/`);
+    lastmods = await $fetch(`${apiBase}/sitemap/lastmod/`, {
+      headers: {
+        "X-Public-Api-Key": config.apiSecret,
+      },
+    });
   } catch (err) {
     // Fallback if backend is temporarily unavailable
     console.warn("Failed to fetch sitemap lastmod, using fallback date");

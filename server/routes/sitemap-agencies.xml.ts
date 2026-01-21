@@ -4,6 +4,11 @@ export default defineEventHandler(async () => {
 
   const agencies = await $fetch<any[]>(
     `${config.public.apiBase}/sitemap/agencies/`,
+    {
+      headers: {
+        "X-Public-Api-Key": config.apiSecret,
+      },
+    },
   );
 
   const urls = agencies
