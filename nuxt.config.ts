@@ -5,6 +5,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   runtimeConfig: {
+    vercelBypassToken: '', // private
     apiToken: '', // private
     apiSecret: '', // private
     public: {
@@ -78,7 +79,7 @@ export default defineNuxtConfig({
   nitro: {
     vercel: {
       config: {
-        bypassToken: 'bJ8bbyI9p/suIZV1CeBXvOWsynhaS616IqW5BrNDLWU=',
+        bypassToken: process.env.NUXT_VERCEL_BYPASS_TOKEN || '',
       },
     },
     prerender: {
