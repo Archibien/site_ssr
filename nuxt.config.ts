@@ -72,7 +72,8 @@ export default defineNuxtConfig({
     '/france/**': {
       isr: 60 * 60 * 24 * 3, // regenerate at most once per 3 days
     },
-    '/sitemap.xml': { isr: 60 * 60 * 24 },
+    '/sitemap.xml': { isr: 3600 },
+    '/sitemap-*.xml': { isr: 60 * 60 * 24 },
   },
   nitro: {
     vercel: {
