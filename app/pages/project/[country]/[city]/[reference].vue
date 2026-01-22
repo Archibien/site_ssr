@@ -35,6 +35,7 @@ const renderedAt = useState('rendered-at', () => new Date().toISOString())
   <main v-if="data">
     <h1>{{ data.reference.title }}</h1>
     <p>{{ data.reference.description }}</p>
+    <pre>{{ data.reference }}</pre>
 
     <p>Autres refs:</p>
     <SlidersReferences :references="data.similar_references" />

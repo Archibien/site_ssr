@@ -10,7 +10,7 @@ export interface Typology {
   slug: string
   actions: string[]
   title_page: string
-  categories: string[]
+  category: string
   masculine: boolean
   image: TypologyImage
   background_image: TypologyImage

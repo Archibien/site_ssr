@@ -1,3 +1,5 @@
+import { sitemapHeaders } from '~/utils'
+
 export default defineEventHandler(async () => {
   const config = useRuntimeConfig()
   const baseUrl = 'https://www.archibien.com'
@@ -27,9 +29,6 @@ ${urls}
 </urlset>`
 
   return new Response(xml, {
-    headers: {
-      'Content-Type': 'application/xml',
-      'Cache-Control': 'public, max-age=86400, s-maxage=86400',
-    },
+    headers: sitemapHeaders(259200, 1800),
   })
 })

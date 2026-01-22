@@ -60,6 +60,9 @@ export default defineNuxtConfig({
       prerender: true,
       isr: 60 * 60 * 24, // 24h
     },
+    '/typologies/**': {
+      isr: 60 * 60 * 24 * 3, // 3 days
+    },
     '/agence/**': {
       isr: 60 * 60 * 24, // regenerate at most once per 24h
     },

@@ -1,220 +1,181 @@
 [
-    {
-        "name": "Construction de maison",
-        "name_plural": "Constructions de maisons",
-        "slug": "construction-maison",
-        "actions": [
-            "construction"
-        ],
-        "title_page": "Construire sa maison",
-        "categories": [
-            "maison"
-        ],
-        "masculine": false,
-        "image": {
-            "url": "Archibien-TypePart-Projet-01-Construction-Maison-House.jpg",
-            "alt": "Une maison neuve ou un bâtiment neuf à construire ?",
-            "title": "Construire une maison, des logements, un immeuble, ou tout autre bâtiment"
-        },
-        "background_image": {
-            "url": "categories/background-images/Jonathan-Letoublon-Norzh-Studio-via-Archibien-maison-neuve-en-Bretagne.jpg",
-            "alt": "Une maison neuve ou un bâtiment neuf à construire ?",
-            "title": "Construire une maison, des logements, un immeuble, ou tout autre bâtiment"
-        },
-        "housing": true
+  {
+    "name": "Construction de maison",
+    "name_plural": "Constructions de maisons",
+    "slug": "construction-maison",
+    "actions": ["construction"],
+    "title_page": "Construire sa maison",
+    "category": ["maison"],
+    "masculine": false,
+    "image": {
+      "url": "Archibien-TypePart-Projet-01-Construction-Maison-House.jpg",
+      "alt": "Une maison neuve ou un bâtiment neuf à construire ?",
+      "title": "Construire une maison, des logements, un immeuble, ou tout autre bâtiment"
     },
-    {
-        "name": "Extension ou agrandissement de maison",
-        "name_plural": "Extensions ou agrandissements de maisons",
-        "slug": "extension-maison",
-        "actions": [
-            "agrandissement"
-        ],
-        "title_page": "Agrandir sa maison",
-        "categories": [
-            "maison"
-        ],
-        "masculine": false,
-        "image": {
-            "url": "Archibien-TypePart-Projet-02-Extension-Thierry-Gravoille.jpg",
-            "alt": "Pour gagner de l'espace de vie, réalisez une extension",
-            "title": "Réaliser une extension, une pièce en plus, une annexe, un agrandissement"
-        },
-        "background_image": {
-            "url": "categories/background-images/Extension_maison_Nantes_Clisson_Architecte_Archibien_8.jpg",
-            "alt": "Pour gagner de l'espace de vie, réalisez une extension",
-            "title": "Réaliser une extension, une pièce en plus, une annexe, un agrandissement"
-        },
-        "housing": true
+    "background_image": {
+      "url": "categories/background-images/Jonathan-Letoublon-Norzh-Studio-via-Archibien-maison-neuve-en-Bretagne.jpg",
+      "alt": "Une maison neuve ou un bâtiment neuf à construire ?",
+      "title": "Construire une maison, des logements, un immeuble, ou tout autre bâtiment"
     },
-    {
-        "name": "Rénovation et aménagement de maison",
-        "name_plural": "Rénovations et aménagements de maisons",
-        "slug": "renovation-maison",
-        "actions": [
-            "renovation",
-            "amenagement"
-        ],
-        "title_page": "Rénover sa maison",
-        "categories": [
-            "maison"
-        ],
-        "masculine": false,
-        "image": {
-            "url": "Archibien-TypePart-Projet-03-Renovation-Jonathan-Letoublon-photographe.jpg",
-            "alt": "Pour rénover ou aménager une construction existante avec Archibien",
-            "title": "Pour rénover ou aménager une construction existante avec Archibien"
-        },
-        "background_image": {
-            "url": "categories/background-images/Archibien-architecte-renovation-de-maison.jpg",
-            "alt": "Pour rénover ou aménager une construction existante avec Archibien",
-            "title": "Pour rénover ou aménager une construction existante avec Archibien"
-        },
-        "housing": true
+    "housing": true
+  },
+  {
+    "name": "Extension ou agrandissement de maison",
+    "name_plural": "Extensions ou agrandissements de maisons",
+    "slug": "extension-maison",
+    "actions": ["agrandissement"],
+    "title_page": "Agrandir sa maison",
+    "category": ["maison"],
+    "masculine": false,
+    "image": {
+      "url": "Archibien-TypePart-Projet-02-Extension-Thierry-Gravoille.jpg",
+      "alt": "Pour gagner de l'espace de vie, réalisez une extension",
+      "title": "Réaliser une extension, une pièce en plus, une annexe, un agrandissement"
     },
-    {
-        "name": "Rénovation et aménagement d'appartement",
-        "name_plural": "Rénovations et aménagements d'appartements",
-        "slug": "renovation-appartement",
-        "actions": [
-            "renovation",
-            "amenagement"
-        ],
-        "title_page": "Rénover son appartement",
-        "categories": [
-            "appartement"
-        ],
-        "masculine": false,
-        "image": {
-            "url": "Archibien-TypePart-Projet-04-Renovation-Appartement-Jonathan-Letoublon-photographe.jpg",
-            "alt": "Pour rénover ou aménager une construction existante avec Archibien",
-            "title": "Pour rénover ou aménager une construction existante avec Archibien"
-        },
-        "background_image": {
-            "url": "categories/background-images/renovation-appartement-architecte-archibien.jpg",
-            "alt": "Pour rénover ou aménager une construction existante avec Archibien",
-            "title": "Pour rénover ou aménager une construction existante avec Archibien"
-        },
-        "housing": true
+    "background_image": {
+      "url": "categories/background-images/Extension_maison_Nantes_Clisson_Architecte_Archibien_8.jpg",
+      "alt": "Pour gagner de l'espace de vie, réalisez une extension",
+      "title": "Réaliser une extension, une pièce en plus, une annexe, un agrandissement"
     },
-    {
-        "name": "Surélévation de maison ou de garage",
-        "name_plural": "Surélévations de maisons ou de garages",
-        "slug": "surelevation-maison",
-        "actions": [
-            "surelevation"
-        ],
-        "title_page": "Surélever sa maison",
-        "categories": [
-            "maison"
-        ],
-        "masculine": false,
-        "image": {
-            "url": "Archibien-TypePart-Projet-05-Surelevation-Jonathan-Letoublon.jpg",
-            "alt": "Surélever une maison pour créer des mètres carrés",
-            "title": "Surélever une maison pour créer des mètres carrés"
-        },
-        "background_image": {
-            "url": "categories/background-images/Surelevation maison Nantes Rennes architecte Archibien.jpg",
-            "alt": "Surélever une maison pour créer des mètres carrés",
-            "title": "Surélever une maison pour créer des mètres carrés"
-        },
-        "housing": true
+    "housing": true
+  },
+  {
+    "name": "Rénovation et aménagement de maison",
+    "name_plural": "Rénovations et aménagements de maisons",
+    "slug": "renovation-maison",
+    "actions": ["renovation", "amenagement"],
+    "title_page": "Rénover sa maison",
+    "category": ["maison"],
+    "masculine": false,
+    "image": {
+      "url": "Archibien-TypePart-Projet-03-Renovation-Jonathan-Letoublon-photographe.jpg",
+      "alt": "Pour rénover ou aménager une construction existante avec Archibien",
+      "title": "Pour rénover ou aménager une construction existante avec Archibien"
     },
-    {
-        "name": "Surélévation d’immeuble",
-        "name_plural": "Surélévations d’immeubles",
-        "slug": "surelevation-immeuble",
-        "actions": [
-            "surelevation"
-        ],
-        "title_page": "Surélever son immeuble",
-        "categories": [
-            "immeuble"
-        ],
-        "masculine": false,
-        "image": {
-            "url": "Archibien-TypePart-Projet-06-Surelevation-Immeuble-Nom-Architecte.jpg",
-            "alt": "Surélever un immeuble pour créer des mètres carrés",
-            "title": "Surélever un immeuble pour créer des mètres carrés"
-        },
-        "background_image": {
-            "url": "categories/background-images/Architecte-surelevation-immeuble.jpg",
-            "alt": "Pour rénover ou aménager des locaux ou des bureaux avec Archibien.",
-            "title": "Local commercial ou des bureaux."
-        },
-        "housing": true
+    "background_image": {
+      "url": "categories/background-images/Archibien-architecte-renovation-de-maison.jpg",
+      "alt": "Pour rénover ou aménager une construction existante avec Archibien",
+      "title": "Pour rénover ou aménager une construction existante avec Archibien"
     },
-    {
-        "name": "Construction de bâtiment ou d'immeuble",
-        "name_plural": "Constructions de bâtiments ou d'immeubles",
-        "slug": "construction-immeuble",
-        "actions": [
-            "construction"
-        ],
-        "title_page": "Construire son bâtiment ou immeuble",
-        "categories": [
-            "immeuble"
-        ],
-        "masculine": false,
-        "image": {
-            "url": "Archibien-TypePro-Projet-07-Promotion-Immobiliere-Real-Estate.jpg",
-            "alt": "Pour construire des bâtiments ou immeubles avec Archibien.",
-            "title": "Pour construire des bâtiments ou immeubles avec Archibien."
-        },
-        "background_image": {
-            "url": "categories/background-images/Construction-batiment-immeuble-architecte-archibien.jpg",
-            "alt": "Pour construire des bâtiments ou immeubles avec Archibien.",
-            "title": "Pour construire des bâtiments ou immeubles avec Archibien."
-        },
-        "housing": false
+    "housing": true
+  },
+  {
+    "name": "Rénovation et aménagement d'appartement",
+    "name_plural": "Rénovations et aménagements d'appartements",
+    "slug": "renovation-appartement",
+    "actions": ["renovation", "amenagement"],
+    "title_page": "Rénover son appartement",
+    "category": ["appartement"],
+    "masculine": false,
+    "image": {
+      "url": "Archibien-TypePart-Projet-04-Renovation-Appartement-Jonathan-Letoublon-photographe.jpg",
+      "alt": "Pour rénover ou aménager une construction existante avec Archibien",
+      "title": "Pour rénover ou aménager une construction existante avec Archibien"
     },
-    {
-        "name": "Rénovation de bâtiment ou d'immeuble",
-        "name_plural": "Rénovations de bâtiments ou d'immeubles",
-        "slug": "renovation-immeuble",
-        "actions": [
-            "renovation"
-        ],
-        "title_page": "Rénover son bâtiment ou immeuble",
-        "categories": [
-            "immeuble"
-        ],
-        "image": {
-            "url": "Archibien-TypePro-Projet-08-Renovation-Immeuble.jpg",
-            "alt": "Pour rénover ou aménager des bâtiments ou immeubles avec Archibien.",
-            "title": "Pour rénover ou aménager des bâtiments ou immeubles avec Archibien."
-        },
-        "background_image": {
-            "url": "categories/background-images/Archibien-architecte-renovation-immeuble.jpg",
-            "alt": "Pour rénover ou aménager des bâtiments ou immeubles avec Archibien.",
-            "title": "Pour rénover ou aménager des bâtiments ou immeubles avec Archibien."
-        },
-        "housing": false
+    "background_image": {
+      "url": "categories/background-images/renovation-appartement-architecte-archibien.jpg",
+      "alt": "Pour rénover ou aménager une construction existante avec Archibien",
+      "title": "Pour rénover ou aménager une construction existante avec Archibien"
     },
-    {
-        "name": "Aménagement et rénovation de bureaux",
-        "name_plural": "Aménagements et rénovations de bureaux",
-        "slug": "amenagement-bureau",
-        "actions": [
-            "amenagement",
-            "renovation"
-        ],
-        "title_page": "Rénover son bureau",
-        "categories": [
-            "bureaux"
-        ],
-        "masculine": true,
-        "image": {
-            "url": "Archibien-TypePro-Projet-03-Amenagement-Bureau.jpg",
-            "alt": "Pour rénover ou aménager des locaux ou des bureaux avec Archibien.",
-            "title": "Local commercial ou des bureaux."
-        },
-        "background_image": {
-            "url": "categories/background-images/Aménagement-renovation-bureaux-Archibien-Yemanja-Stilla-Paris.jpg",
-            "alt": "Pour rénover ou aménager des locaux ou des bureaux avec Archibien.",
-            "title": "Local commercial ou des bureaux."
-        },
-        "housing": false
-    }
+    "housing": true
+  },
+  {
+    "name": "Surélévation de maison ou de garage",
+    "name_plural": "Surélévations de maisons ou de garages",
+    "slug": "surelevation-maison",
+    "actions": ["surelevation"],
+    "title_page": "Surélever sa maison",
+    "category": ["maison"],
+    "masculine": false,
+    "image": {
+      "url": "Archibien-TypePart-Projet-05-Surelevation-Jonathan-Letoublon.jpg",
+      "alt": "Surélever une maison pour créer des mètres carrés",
+      "title": "Surélever une maison pour créer des mètres carrés"
+    },
+    "background_image": {
+      "url": "categories/background-images/Surelevation maison Nantes Rennes architecte Archibien.jpg",
+      "alt": "Surélever une maison pour créer des mètres carrés",
+      "title": "Surélever une maison pour créer des mètres carrés"
+    },
+    "housing": true
+  },
+  {
+    "name": "Surélévation d’immeuble",
+    "name_plural": "Surélévations d’immeubles",
+    "slug": "surelevation-immeuble",
+    "actions": ["surelevation"],
+    "title_page": "Surélever son immeuble",
+    "category": ["immeuble"],
+    "masculine": false,
+    "image": {
+      "url": "Archibien-TypePart-Projet-06-Surelevation-Immeuble-Nom-Architecte.jpg",
+      "alt": "Surélever un immeuble pour créer des mètres carrés",
+      "title": "Surélever un immeuble pour créer des mètres carrés"
+    },
+    "background_image": {
+      "url": "categories/background-images/Architecte-surelevation-immeuble.jpg",
+      "alt": "Pour rénover ou aménager des locaux ou des bureaux avec Archibien.",
+      "title": "Local commercial ou des bureaux."
+    },
+    "housing": true
+  },
+  {
+    "name": "Construction de bâtiment ou d'immeuble",
+    "name_plural": "Constructions de bâtiments ou d'immeubles",
+    "slug": "construction-immeuble",
+    "actions": ["construction"],
+    "title_page": "Construire son bâtiment ou immeuble",
+    "category": ["immeuble"],
+    "masculine": false,
+    "image": {
+      "url": "Archibien-TypePro-Projet-07-Promotion-Immobiliere-Real-Estate.jpg",
+      "alt": "Pour construire des bâtiments ou immeubles avec Archibien.",
+      "title": "Pour construire des bâtiments ou immeubles avec Archibien."
+    },
+    "background_image": {
+      "url": "categories/background-images/Construction-batiment-immeuble-architecte-archibien.jpg",
+      "alt": "Pour construire des bâtiments ou immeubles avec Archibien.",
+      "title": "Pour construire des bâtiments ou immeubles avec Archibien."
+    },
+    "housing": false
+  },
+  {
+    "name": "Rénovation de bâtiment ou d'immeuble",
+    "name_plural": "Rénovations de bâtiments ou d'immeubles",
+    "slug": "renovation-immeuble",
+    "actions": ["renovation"],
+    "title_page": "Rénover son bâtiment ou immeuble",
+    "category": ["immeuble"],
+    "image": {
+      "url": "Archibien-TypePro-Projet-08-Renovation-Immeuble.jpg",
+      "alt": "Pour rénover ou aménager des bâtiments ou immeubles avec Archibien.",
+      "title": "Pour rénover ou aménager des bâtiments ou immeubles avec Archibien."
+    },
+    "background_image": {
+      "url": "categories/background-images/Archibien-architecte-renovation-immeuble.jpg",
+      "alt": "Pour rénover ou aménager des bâtiments ou immeubles avec Archibien.",
+      "title": "Pour rénover ou aménager des bâtiments ou immeubles avec Archibien."
+    },
+    "housing": false
+  },
+  {
+    "name": "Aménagement et rénovation de bureaux",
+    "name_plural": "Aménagements et rénovations de bureaux",
+    "slug": "amenagement-bureau",
+    "actions": ["amenagement", "renovation"],
+    "title_page": "Rénover son bureau",
+    "category": ["bureaux"],
+    "masculine": true,
+    "image": {
+      "url": "Archibien-TypePro-Projet-03-Amenagement-Bureau.jpg",
+      "alt": "Pour rénover ou aménager des locaux ou des bureaux avec Archibien.",
+      "title": "Local commercial ou des bureaux."
+    },
+    "background_image": {
+      "url": "categories/background-images/Aménagement-renovation-bureaux-Archibien-Yemanja-Stilla-Paris.jpg",
+      "alt": "Pour rénover ou aménager des locaux ou des bureaux avec Archibien.",
+      "title": "Local commercial ou des bureaux."
+    },
+    "housing": false
+  }
 ]

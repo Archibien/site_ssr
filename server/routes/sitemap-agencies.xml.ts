@@ -1,15 +1,14 @@
-export default defineEventHandler(async () => {
-  const config = useRuntimeConfig();
-  const baseUrl = "https://www.archibien.com";
+import { sitemapHeaders } from '~/utils'
 
-  const agencies = await $fetch<any[]>(
-    `${config.public.apiBase}/sitemap/agencies/`,
-    {
-      headers: {
-        "X-Public-Api-Key": config.apiSecret,
-      },
+export default defineEventHandler(async () => {
+  const config = useRuntimeConfig()
+  const baseUrl = 'https://www.archibien.com'
+
+  const agencies = await $fetch<any[]>(`${config.public.apiBase}/sitemap/agencies/`, {
+    headers: {
+      'X-Public-Api-Key': config.apiSecret,
     },
-  );
+  })
 
   const urls = agencies
     .map(
@@ -20,19 +19,17 @@ export default defineEventHandler(async () => {
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
     </url>
-  `,
+  `
     )
-    .join("");
+    .join('')
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls}
-</urlset>`;
+</urlset>`
 
   return new Response(xml, {
-    headers: {
-      "Content-Type": "application/xml",
-      "Cache-Control": "public, max-age=86400, s-maxage=86400",
-    },
-  });
-});
+    // 1 day cache for browsers, 15 minutes for CDN
+    headers: sitemapHeaders(86400, 900),
+  })
+})

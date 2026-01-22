@@ -4,20 +4,18 @@ export default defineEventHandler(async () => {
   const config = useRuntimeConfig()
   const baseUrl = 'https://www.archibien.com'
 
-  const references = await $fetch<any[]>(`${config.public.apiBase}/sitemap/references/`, {
+  const departments = await $fetch<any[]>(`${config.public.apiBase}/sitemap/departments/`, {
     headers: {
       'X-Public-Api-Key': config.apiSecret,
     },
   })
 
-  const urls = references
+  const urls = departments
     .map(
-      (r) => `
+      (d) => `
     <url>
-      <loc>${baseUrl}${r.url}</loc>
-      <lastmod>${r.lastmod}</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.8</priority>
+      <loc>${baseUrl}${d.url}</loc>
+      <lastmod>${d.lastmod}</lastmod>
     </url>
   `
     )
@@ -29,6 +27,6 @@ ${urls}
 </urlset>`
 
   return new Response(xml, {
-    headers: sitemapHeaders(86400, 900),
+    headers: sitemapHeaders(259200, 1800),
   })
 })
