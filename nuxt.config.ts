@@ -66,7 +66,7 @@ export default defineNuxtConfig({
     '/project/**': {
       isr: 60 * 60 * 24, // regenerate at most once per 24h
     },
-    '/france/**/architectes': {
+    '/france/**': {
       isr: 60 * 60 * 24 * 3, // regenerate at most once per 3 days
     },
     '/sitemap.xml': { isr: 60 * 60 * 24 },
