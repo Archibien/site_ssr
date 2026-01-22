@@ -83,6 +83,10 @@ export default defineNuxtConfig({
     '/sitemap-*.xml': { isr: 60 * 60 * 24 },
   },
 
+  socialShare: {
+    baseUrl: 'https://www.archibien.com', // required!
+  },
+
   nitro: {
     vercel: {
       config: {
@@ -113,5 +117,5 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['@nuxt/scripts'],
+  modules: ['@nuxt/scripts', 'nuxt-easy-lightbox', '@stefanobartoletti/nuxt-social-share'],
 })

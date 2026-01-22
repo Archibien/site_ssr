@@ -122,6 +122,12 @@ html {
 .badge-disabled {
   @apply text-gray-600 bg-gray-100;
 }
+.social-share-button {
+  color: var(--color-brand);
+}
+.social-share-button:hover {
+  color: var(--color-brand);
+}
 
 .highlight-top {
   @apply h-10 sm:h-16 w-full;
