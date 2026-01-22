@@ -1,9 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import tailwindcss from '@tailwindcss/vite'
 import { departments } from './app/data/departments'
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
+
   runtimeConfig: {
     vercelBypassToken: '', // private
     apiToken: '', // private
@@ -13,6 +15,7 @@ export default defineNuxtConfig({
       googleMapsApiKey: '',
     },
   },
+
   experimental: {
     defaults: {
       nuxtLink: {
@@ -20,6 +23,9 @@ export default defineNuxtConfig({
       },
     },
   },
+
+  css: ['~/assets/main.css', '~/assets/fonts.css'],
+
   routeRules: {
     '/': {
       prerender: true,
@@ -76,6 +82,7 @@ export default defineNuxtConfig({
     '/sitemap.xml': { isr: 3600 },
     '/sitemap-*.xml': { isr: 60 * 60 * 24 },
   },
+
   nitro: {
     vercel: {
       config: {
@@ -86,4 +93,25 @@ export default defineNuxtConfig({
       routes: Object.values(departments).map((d) => d.url),
     },
   },
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
+
+  app: {
+    head: {
+      link: [
+        // Preload font to avoid layout shift on first load, only one weight
+        {
+          rel: 'preload',
+          as: 'font',
+          type: 'font/ttf',
+          href: '/fonts/IBMPlexSansCondensed-Light.ttf',
+          crossorigin: 'anonymous',
+        },
+      ],
+    },
+  },
+
+  modules: ['@nuxt/scripts'],
 })

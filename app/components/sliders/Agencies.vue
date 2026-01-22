@@ -1,11 +1,11 @@
 <template>
-  <section>
-    <div v-for="agency in agencies" :key="agency.name">
-      <NuxtLink :to="agency.url">
-        {{ agency.name }}
-      </NuxtLink>
-    </div>
-  </section>
+  <SectionsCarousel>
+    <CardsAgency
+      v-for="(item, index) in agencies"
+      :key="index"
+      :data="item"
+      class="basis-[140px] sm:basis-[170px] mr-5 container-slide" />
+  </SectionsCarousel>
 </template>
 
 <script setup lang="ts">

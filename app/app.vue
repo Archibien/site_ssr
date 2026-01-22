@@ -1,6 +1,9 @@
 <template>
   <NuxtLoadingIndicator color="#2469ff" />
-  <header>Header content <NuxtLink to="/">Home</NuxtLink></header>
+
+  <UiNavbar />
   <NuxtPage />
-  <footer>Footer content</footer>
+  <UiFooter />
 </template>
+
+<script setup lang="ts"></script>

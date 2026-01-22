@@ -1,12 +1,11 @@
 <template>
-  <section>
-    <div v-for="reference in references" :key="reference.url">
-      <NuxtLink :to="reference.url">
-        {{ reference.title }}
-      </NuxtLink>
-      <p>{{ reference.agency }}</p>
-    </div>
-  </section>
+  <SectionsCarousel>
+    <CardsReference
+      v-for="(ref, index) in references"
+      :key="index"
+      :data="ref"
+      class="basis-[140px] sm:basis-[170px] mr-5 container-slide" />
+  </SectionsCarousel>
 </template>
 
 <script setup lang="ts">
