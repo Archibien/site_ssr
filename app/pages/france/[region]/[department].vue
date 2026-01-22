@@ -150,6 +150,6 @@ const renderedAt = useState('rendered-at', () => new Date().toISOString())
       departmentSlug: dep.departmentSlug,
     }"
     :local-typologies="true">
-    {{ dep.prefix2 }} {{ dep.department }} {{ depCode }}
+    {{ dep.prefix2 }} {{ dep.department }} {{ code }}
   </LazySectionsCities>
 </template>
