@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { departments } from '~/data/departments'
+import type { AgencyDetails } from '~/types/agency'
 
 const route = useRoute()
 const config = useRuntimeConfig()
 const agencyUrl = route.path
-const { data: agency, error } = await useFetch('/api/agency', {
+const { data: agency, error } = await useFetch<AgencyDetails>('/api/agency', {
   server: true,
   query: { url: agencyUrl },
 })
@@ -25,6 +26,19 @@ if (error.value) {
     statusMessage: 'Unable to load agency',
   })
 }
+const banner = shallowRef(
+  agency.value?.is_subscribed
+    ? agency?.value.logo.default || agency?.value.logo.original
+    : '/img/placeholders/logo-archibien.jpg'
+)
+useSeoMeta({
+  title: agency.value?.name,
+  ogTitle: agency.value?.name,
+  description: agency.value?.metadata.agency_title,
+  ogDescription: agency.value?.metadata.agency_title,
+  ogImage: banner.value,
+  twitterCard: 'summary_large_image',
+})
 
 const renderedAt = useState('rendered-at', () => new Date().toISOString())
 const depCode = ref('')
@@ -65,11 +79,7 @@ onMounted(async () => {
         <div
           class="mx-auto rounded-full shadow-sm w-20 h-20 sm:w-maximum sm:h-maximum mb-m overflow-hidden flex">
           <img
-            :src="
-              agency?.is_subscribed
-                ? agency?.logo.default || agency?.logo.original
-                : '/img/placeholders/logo-archibien.jpg'
-            "
+            :src="banner"
             :alt="agency?.metadata.logo.alt"
             :title="agency?.metadata.logo.title"
             fetch-priority="high"
@@ -232,7 +242,8 @@ onMounted(async () => {
       <span>Le positionnement sur la carte est approximatif.</span>
     </p>
 
-    <div id="googlemaps_id" ref="googlemaps" class="w-full h-[300px] sm:h-[500px]" />
+    <WorkZonesMap :areas="agency?.work_zones" class="w-full h-[300px] sm:h-[500px]" />
+
     <p class="text-gray-600 text-sm mt-s max-w-title">
       Le contenu présent dans cette page a été édité et publié par {{ agency.name }}.
       {{ agency.name }} est une structure juridiquement indépendante d'Archibien.com.

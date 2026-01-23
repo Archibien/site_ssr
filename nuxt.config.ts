@@ -104,7 +104,13 @@ export default defineNuxtConfig({
 
   app: {
     head: {
+      title: 'Trois architectes dessinent votre projet',
+      titleTemplate: '%s | Archibien',
+      htmlAttrs: {
+        lang: 'fr',
+      },
       link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         // Preload font to avoid layout shift on first load, only one weight
         {
           rel: 'preload',

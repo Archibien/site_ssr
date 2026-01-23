@@ -53,6 +53,7 @@ export interface AgencyDetails {
     hd: string
     original: string
   }
+  is_subscribed: boolean
   public_id: string
   description: string
   project_types: string[]
