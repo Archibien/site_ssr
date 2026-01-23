@@ -39,6 +39,11 @@ onMounted(async () => {
   // if we should keep the local/globalphone number or not
   setPhone(department.phone)
 })
+useSeoMeta({
+  title,
+  ogTitle: title,
+  twitterTitle: title,
+})
 </script>
 
 <template>

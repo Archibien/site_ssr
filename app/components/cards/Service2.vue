@@ -19,16 +19,13 @@
       </p>
       <ul class="text-sm">
         <li class="flex items-top mb-min">
-          <Check class="w-s mr-xs" :font-controlled="false" /> Réalisation de votre cahier des
-          charges
+          <IconsCheck class="w-s mr-xs" /> Réalisation de votre cahier des charges
         </li>
         <li class="flex items-top mb-min">
-          <Check class="w-s mr-xs" :font-controlled="false" /> Étude par un architecte local
-          sélectionné
+          <IconsCheck class="w-s mr-xs" /> Étude par un architecte local sélectionné
         </li>
         <li class="flex items-top">
-          <Check class="w-s mr-xs" :font-controlled="false" /> Rédaction d’un rapport de synthèse de
-          projet
+          <IconsCheck class="w-s mr-xs" /> Rédaction d’un rapport de synthèse de projet
         </li>
       </ul>
     </div>
@@ -40,7 +37,6 @@
 </template>
 
 <script setup lang="ts">
-import Check from '~/assets/icons/check.svg'
 defineProps({
   state: {
     type: String,
@@ -48,15 +44,3 @@ defineProps({
   },
 })
 </script>
-
-<style>
-@reference '~/assets/css/main.css';
-.card-primary {
-  @apply border border-blue;
-}
-
-.card-primary h4,
-.card-primary span {
-  @apply text-blue;
-}
-</style>

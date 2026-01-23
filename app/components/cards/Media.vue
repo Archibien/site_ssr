@@ -4,8 +4,7 @@
       :src="`/img/medias/${media.logo.url_square}`"
       :alt="media.logo.alt"
       :title="media.logo.title"
-      class="max-w-[100px] h-[100px] object-contain"
-      placeholder />
+      class="max-w-[100px] h-[100px] object-contain" />
     <div>
       <p class="text-darkblue text-title-m font-semibold mb-xs">
         {{ media.name }}

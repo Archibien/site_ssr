@@ -68,17 +68,20 @@ const typologyLink = computed(() => {
 const phoneStore = usePhone()
 
 onMounted(async () => {
-  // This is done on client only to avoid a hydration mismatch : on server side we can't know in advance
-  // if we should keep the local/globalphone number or not
-  //   const department = departments[route.params.dep.split('-')[0].slice(0, 2)] as Department
-  //   if (status.value == 'success') {
   if (data?.value.reference.dep_code) {
     const department = departments[data?.value.reference.dep_code]
     setPhone(department.phone)
   }
-  //   }
 })
-
+useSeoMeta({
+  title: `${actionCategory.value} à ${data.value?.reference.city} | ${data.value?.reference.agency.name} ${data.value?.reference.agency.type} | ${data.value?.reference.title}`,
+  ogTitle: `${data.value?.reference.title} | ${data.value?.reference.agency.name}`,
+  ogImage: data.value?.reference.banner.thumbnail,
+  ogImageAlt: data.value?.reference.description.slice(0, 50),
+  twitterTitle: `${data.value?.reference.title} | ${data.value?.reference.agency.name}`,
+  twitterDescription: data.value?.reference.description.slice(0, 50),
+  twitterImage: data.value?.reference.banner.thumbnail,
+})
 const renderedAt = useState('rendered-at', () => new Date().toISOString())
 </script>
 

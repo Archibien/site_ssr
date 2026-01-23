@@ -143,6 +143,19 @@ html {
   @apply h-6 sm:h-10;
 }
 
+.card-primary {
+  @apply border border-blue;
+}
+
+.card-primary h4,
+.card-primary span {
+  @apply text-blue;
+}
+
+.callout-section svg {
+  @apply block mx-auto my-s sm:my-m w-auto h-9 sm:h-12;
+}
+
 /* Divider */
 .divider {
   @apply border-b border-gray-300 mx-auto w-full;

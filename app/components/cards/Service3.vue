@@ -19,16 +19,12 @@
       </p>
       <ul class="text-sm">
         <li class="flex items-top mb-min">
-          <Check class="w-s mr-xs" :font-controlled="false" /> Visite par un architecte local
-          sélectionné
+          <IconsCheck class="w-s mr-xs" /> Visite par un architecte local sélectionné
         </li>
         <li class="flex items-top mb-min">
-          <Check class="w-s mr-xs" :font-controlled="false" /> Suivi du dossier sur l’application
-          Archibien
+          <IconsCheck class="w-s mr-xs" /> Suivi du dossier sur l’application Archibien
         </li>
-        <li class="flex items-top">
-          <Check class="w-s mr-xs" :font-controlled="false" /> Accompagnement de A à Z
-        </li>
+        <li class="flex items-top"><IconsCheck class="w-s mr-xs" /> Accompagnement de A à Z</li>
       </ul>
     </div>
     <img
@@ -39,7 +35,6 @@
 </template>
 
 <script setup lang="ts">
-import Check from '~/assets/icons/check.svg'
 defineProps({
   state: {
     type: String,
@@ -47,15 +42,3 @@ defineProps({
   },
 })
 </script>
-
-<style>
-@reference '~/assets/css/main.css';
-.card-primary {
-  @apply border border-blue;
-}
-
-.card-primary h4,
-.card-primary span {
-  @apply text-blue;
-}
-</style>

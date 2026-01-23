@@ -64,10 +64,3 @@ export default {
   },
 }
 </script>
-
-<style>
-@reference '~/assets/css/main.css';
-.callout-section svg {
-  @apply block mx-auto my-s sm:my-m w-auto h-9 sm:h-12;
-}
-</style>

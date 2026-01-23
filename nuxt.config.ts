@@ -31,6 +31,18 @@ export default defineNuxtConfig({
       prerender: true,
       isr: 60 * 60 * 24, // 24h
     }, // prerender with revalidation every 24h
+    '/architectes/': {
+      prerender: true,
+      isr: 60 * 60 * 24, // 24h
+    }, // prerender with revalidation every 24h
+    '/a-propos/': { prerender: true },
+    '/cgu/': { prerender: true },
+    '/contact/': { prerender: true },
+    '/cookies/': { prerender: true },
+    '/medias/': { prerender: true },
+    '/mentions-legales/': { prerender: true },
+    '/tarifs/': { prerender: true },
+    '/services/**': { prerender: true },
     '/typologies/amenagement-bureau/': {
       prerender: true,
       isr: 60 * 60 * 24, // 24h
