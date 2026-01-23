@@ -27,7 +27,7 @@ const depWithPrefix = computed(() => {
     ? `${dep.prefix1}${dep.department}`
     : `${dep.prefix1} ${dep.department}`
 })
-const title = ref(`Notre sélection des meilleurs architectes ${depWithPrefix.value} (${code})`)
+const title = shallowRef(`Notre sélection des meilleurs architectes ${depWithPrefix.value}`)
 const cities = allCities[code]
 
 // Client-side map logic
@@ -50,14 +50,14 @@ useIntersectionObserver(
   { threshold: 0.1 }
 )
 const renderedAt = useState('rendered-at', () => new Date().toISOString())
+useSeoMeta({
+  title,
+})
 </script>
 
 <template>
   <section class="bg-gray-200">
-    <Hero
-      :title="`Notre sélection des meilleurs architectes ${depWithPrefix}`"
-      background="bg-gray-200"
-      lien-archi />
+    <Hero :title="title" background="bg-gray-200" lien-archi />
     <SectionsMedias />
     <section class="py-xl lg:py-xxl app-container">
       <h2 class="text-darkblue font-semibold text-title-l mb-min sm:mb-xs text-center">

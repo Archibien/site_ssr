@@ -7,20 +7,27 @@
 </template>
 
 <script setup lang="ts">
+const description =
+  'Un projet de construction, rénovation, extension ? Avec Archibien, trois architectes dessinent et chiffrent votre projet. Comparez, choisissez !'
+const img = '/img/logo-archibien.jpg'
+const title = 'Trois architectes dessinent votre projet'
+const route = useRoute()
 useSeoMeta({
-  title: 'Trois architectes dessinent votre projet',
+  title,
   titleTemplate: '%s | Archibien',
   robots: 'index, follow',
-  description:
-    'Un projet de construction, rénovation, extension ? Avec Archibien, trois architectes dessinent et chiffrent votre projet. Comparez, choisissez !',
-  ogImage: '/img/logo-archibien.jpg',
-  twitterImage: '/img/logo-archibien.jpg',
-  twitterTitle: 'Trois architectes dessinent votre projet',
-  twitterDescription:
-    'Un projet de construction, rénovation, extension ? Avec Archibien, trois architectes dessinent et chiffrent votre projet. Comparez, choisissez !',
-  twitterCard: 'summary_large_image',
-  ogLocale: 'fr_FR',
+  description,
+  ogTitle: title,
+  ogSiteName: 'Archibien',
+  ogUrl: route.fullPath,
+  ogDescription: description,
+  ogImage: img,
   ogImageAlt: 'Le logo Archibien',
+  ogLocale: 'fr_FR',
+  twitterImage: img,
+  twitterTitle: title,
+  twitterDescription: description,
   twitterImageAlt: 'Le logo Archibien',
+  twitterCard: 'summary_large_image',
 })
 </script>
