@@ -220,7 +220,7 @@
         </p>
       </div>
       <SectionsCarousel>
-        <CardsBlogCard
+        <CardsBlog
           v-for="(inspi, index) in inspirations"
           :key="index"
           :inspi="inspi"
@@ -250,6 +250,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useInspirations } from '~/composables/useBlogPosts'
 
 const goTo = (refName: string) => {
   const element = document.getElementById(refName)
@@ -312,19 +313,14 @@ const questions = [
 ]
 
 // Fetch WordPress posts using useFetch with category filter
-const { data: posts } = await useFetch(
-  'https://blog.archibien.com/wp-json/wp/v2/posts?per_page=10&_embed&categories_slug=inspiration'
-)
+const { data: posts, pending, error } = useInspirations()
 
 // Map posts to fit BlogCard props
 const inspirations = computed(() => {
   if (!posts.value) return []
   return posts.value.map((post: any) => ({
     url: post.link,
-    img:
-      post._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.medium_large?.source_url
-        ?.split('/')
-        .pop() || '',
+    img: post.jetpack_featured_media_url,
     title: post.title.rendered,
     alt: post._embedded?.['wp:featuredmedia']?.[0]?.alt_text || post.title.rendered,
     tag: post._embedded?.['wp:term']?.[0]?.[0]?.name || '',

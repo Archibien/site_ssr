@@ -29,9 +29,6 @@
             allowfullscreen
             loading="lazy"
             frameborder="0" />
-          <!-- <nuxt-img
-            src="https://maps.googleapis.com/maps/api/staticmap?center=Archibien+-+Station+F+58+Rue+Eugene+Freyssinet,+Inc.+HEC,+75013+Paris,+France&zoom=15&size=600x300&markers=color:blue%7Clabel:A%7C48.834515,2.370819&key=AIzaSyDB_5MzHFj4OMlnJjn6lwvo8LBfQxwL_qI"
-        /> -->
         </div>
         <div class="w-full md:w-1/2 md:pl-xs mt-l md:mt-0">
           <p class="text-gray-700 mb-xs">

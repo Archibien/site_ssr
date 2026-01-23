@@ -256,16 +256,8 @@ onMounted(async () => {
 
   <SectionsMainCities class="mt-xl lg:mt-xxl" />
 
-  <!-- <AppContactModal v-model="contactModalDisplayed" :agency="agency" /> -->
-  <!-- <TransitionRoot
-    :show="contactModalDisplayed"
-    as="template"
-    enter="duration-300 ease-out"
-    enter-from="opacity-0"
-    enter-to="opacity-100"
-    leave="duration-200 ease-in"
-    leave-from="opacity-100"
-    leave-to="opacity-0">
-    <LazyAppTestModal v-model="contactModalDisplayed" :agency="agency" />
-  </TransitionRoot> -->
+  <LazyAgencyContactModal
+    :open="contactModalDisplayed"
+    @close="contactModalDisplayed = false"
+    :agency="agency" />
 </template>

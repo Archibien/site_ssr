@@ -1,7 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import tailwindcss from '@tailwindcss/vite'
 import { departments } from './app/data/departments'
+import redirects from './redirects.json'
 
+const buildRedirectRoutesRules = () => {
+  return Object.fromEntries(
+    redirects.map((r) => [r.from, { redirect: { to: r.to, statusCode: 301 } }])
+  )
+}
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
@@ -13,6 +19,7 @@ export default defineNuxtConfig({
     public: {
       apiBase: '',
       googleMapsApiKey: '',
+      siteUrl: 'https://www.archibien.com',
     },
   },
 
@@ -93,6 +100,7 @@ export default defineNuxtConfig({
     },
     '/sitemap.xml': { isr: 3600 },
     '/sitemap-*.xml': { isr: 60 * 60 * 24 },
+    ...buildRedirectRoutesRules(),
   },
 
   socialShare: {
@@ -128,8 +136,12 @@ export default defineNuxtConfig({
           rel: 'preload',
           as: 'font',
           type: 'font/ttf',
-          href: '/fonts/IBMPlexSansCondensed-Light.ttf',
+          href: '/fonts/IBMPlexSansCondensed-Regular.ttf',
           crossorigin: 'anonymous',
+        },
+        {
+          rel: 'canonical',
+          href: 'https://www.archibien.com',
         },
       ],
     },
