@@ -8,6 +8,8 @@ export async function useGoogleMaps() {
   if (!initialized) {
     setOptions({
       key: config.public.googleMapsApiKey,
+      // Style de carte créé ici : https://console.cloud.google.com/google/maps-apis/studio/maps?authuser=1&project=archibien&supportedpurview=project
+      mapIds: [config.public.simpleMapId],
     })
     initialized = true
   }

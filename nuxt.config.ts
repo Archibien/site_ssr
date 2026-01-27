@@ -20,6 +20,7 @@ export default defineNuxtConfig({
       apiBase: '',
       googleMapsApiKey: '',
       siteUrl: 'https://www.archibien.com',
+      simpleMapId: '5c3cc9ce3bffcfb53d25a2c5',
     },
   },
 

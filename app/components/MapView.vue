@@ -1,9 +1,10 @@
 <script setup lang="ts">
+/// <reference types="google.maps" />
 import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
 import { useGoogleMaps } from '@/composables/useGoogleMaps'
 import { useDebounceFn } from '@vueuse/core'
 
-/* ───────────────── props ───────────────── */
+/* ───────────────── types ───────────────── */
 
 type Bounds = {
   north: number
@@ -19,11 +20,15 @@ type Pin = {
   label: string
   pin_type: 'agency' | 'project'
   url?: string
+  category?: string
+  type?: string
+  banner?: string
+  description?: string
 }
 
-const props = defineProps<{
-  initialBounds: Bounds
-}>()
+/* ───────────────── props ───────────────── */
+
+const props = defineProps<{ initialBounds: Bounds }>()
 
 /* ───────────────── refs ───────────────── */
 
@@ -32,9 +37,22 @@ const inputEl = ref<HTMLInputElement | null>(null)
 
 let map: google.maps.Map | null = null
 let autocomplete: google.maps.places.Autocomplete | null = null
-let markers = new Map<string | number, google.maps.Marker>()
-const router = useRouter()
+let markers = new Map<
+  string | number,
+  { marker: google.maps.marker.AdvancedMarkerElement; el: HTMLElement }
+>()
 let infoWindow: google.maps.InfoWindow | null = null
+let PinPopoverClass: ReturnType<typeof createPinPopoverClass> | null = null
+let activePopover: InstanceType<ReturnType<typeof createPinPopoverClass>> | null = null
+let activeMarkerEl: HTMLElement | null = null
+let searchMarker: google.maps.Marker | null = null
+
+const router = useRouter()
+
+/* ───────────────── interaction state ───────────────── */
+
+let isInteracting = false
+let needsFetchAfterInteraction = false
 
 /* ───────────────── helpers ───────────────── */
 
@@ -45,128 +63,261 @@ function boundsToGoogle(b: Bounds) {
 function googleBoundsToBbox(bounds: google.maps.LatLngBounds, precision = 2) {
   const ne = bounds.getNorthEast()
   const sw = bounds.getSouthWest()
-
   const round = (v: number) => v.toFixed(precision)
-
   return [round(sw.lng()), round(sw.lat()), round(ne.lng()), round(ne.lat())].join(',')
 }
 
 function colorForType(type: Pin['pin_type']) {
-  // purple for project, red for agency
-  return type === 'project' ? '#7e3ff2' : '#ef4444'
+  return type === 'project' ? '#2469ff' : '#22204d'
 }
 
-// Simple SVG paths for house (project) and office (agency)
-const HOUSE_PATH = 'M -8,0 L 0,-10 L 8,0 L 8,8 L -8,8 Z'
-const OFFICE_PATH = 'M -6,-12 L 6,-12 L 6,12 L -6,12 Z'
+function setSearchMarker(position: google.maps.LatLng) {
+  if (!map) return
 
-function symbolForType(type: Pin['pin_type']): google.maps.Symbol {
-  const path = type === 'project' ? HOUSE_PATH : OFFICE_PATH
-  return {
-    path,
-    scale: 1,
-    fillColor: colorForType(type),
-    fillOpacity: 1,
-    strokeColor: '#ffffff',
-    strokeOpacity: 1,
-    strokeWeight: 2,
-    anchor: new google.maps.Point(0, 8),
+  // Remove previous marker
+  if (searchMarker) {
+    searchMarker.setMap(null)
+    searchMarker = null
+  }
+
+  searchMarker = new google.maps.Marker({
+    map,
+    position,
+    clickable: false,
+    zIndex: 999, // always above pins
+  })
+}
+
+/* ───────────────── SVG paths ───────────────── */
+
+const HOUSE_PATH =
+  'M8.543 2.232a.75.75 0 0 0-1.085 0l-5.25 5.5A.75.75 0 0 0 2.75 9H4v4a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1a1 1 0 1 1 2 0v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1V9h1.25a.75.75 0 0 0 .543-1.268z'
+
+const OFFICE_PATH =
+  'M8 8a3 3 0 1 0 0-6a3 3 0 0 0 0 6m4.735 6c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139z'
+
+/* ───────────────── marker DOM ───────────────── */
+
+function createMarkerElement(pin: Pin) {
+  const el = document.createElement('div')
+  el.className = 'pin-marker'
+  el.dataset.type = pin.pin_type
+
+  el.innerHTML = `
+    <svg viewBox="0 0 16 16" width="20" height="20">
+      <path
+        d="${pin.pin_type === 'project' ? HOUSE_PATH : OFFICE_PATH}"
+        fill="${colorForType(pin.pin_type)}"
+      />
+    </svg>
+  `
+
+  return el
+}
+
+/* ──────────────── custom popover (UNCHANGED) ──────────────── */
+
+function createPinPopoverClass(google: typeof window.google) {
+  return class PinPopover extends google.maps.OverlayView {
+    private div: HTMLDivElement
+    private position: google.maps.LatLng
+    private onClose: () => void
+
+    constructor(position: google.maps.LatLng, content: HTMLElement, onClose: () => void) {
+      super()
+      this.position = position
+      this.div = document.createElement('div')
+      this.div.className = 'pin-popover'
+      this.div.appendChild(content)
+      this.onClose = onClose
+    }
+
+    onAdd() {
+      this.getPanes()!.floatPane.appendChild(this.div)
+      setTimeout(() => document.addEventListener('click', this.handleOutsideClick))
+    }
+
+    onRemove() {
+      document.removeEventListener('click', this.handleOutsideClick)
+      this.div.remove()
+      clearActiveMarker()
+    }
+
+    draw() {
+      const projection = this.getProjection()
+      const point = projection.fromLatLngToDivPixel(this.position)
+      if (!point) return
+      this.div.style.transform = `translate(${point.x}px, ${point.y - 40}px)`
+    }
+
+    private handleOutsideClick = (e: MouseEvent) => {
+      if (!this.div.contains(e.target as Node)) this.onClose()
+    }
   }
 }
 
-/* ──────────────── pins fetch (client-only) ──────────────── */
+function clearActiveMarker() {
+  activeMarkerEl?.classList.remove('is-selected')
+  activeMarkerEl = null
+}
 
-const bbox = ref<string>('')
-const {
-  data: pins,
-  refresh: refreshPins,
-  pending,
-} = useFetch<Pin[]>('/api/map-pins', {
+function closePopover() {
+  activePopover?.setMap(null)
+  activePopover = null
+}
+
+/* ──────────────── popover content (UNCHANGED) ──────────────── */
+
+function createPopoverContent(pin: Pin) {
+  const el = document.createElement('div')
+  el.className = 'popover-card'
+
+  el.innerHTML = `
+    <button class="popover-close" aria-label="Fermer">✕</button>
+
+    <div class="popover-image">
+      <img src="${pin.banner || '/img/placeholders/logo-archibien.jpg'}"
+           height="180"
+           class="w-full max-h-[180px] object-cover" />
+    </div>
+
+    <div class="popover-footer">
+      <div class="text-sm font-regular mb-1.5">${pin.label}</div>
+
+      ${
+        pin.pin_type === 'project'
+          ? `
+            <span class="inline-flex items-center gap-x-1.5 rounded-full px-2 py-1 text-xs font-medium inset-ring inset-ring-gray-300">
+              ${pin.type}
+            </span>
+            <span class="ml-1 inline-flex items-center gap-x-1.5 rounded-full px-2 py-1 text-xs font-medium inset-ring inset-ring-gray-300">
+              ${pin.category}
+            </span>
+          `
+          : `
+            <span class="inline-flex items-center gap-x-1.5 rounded-full px-2 py-1 text-xs font-medium inset-ring inset-ring-gray-300">
+              ${pin.type}
+            </span>
+          `
+      }
+    </div>
+  `
+
+  el.querySelector('.popover-close')?.addEventListener('click', (e) => {
+    e.stopPropagation()
+    closePopover()
+  })
+
+  el.addEventListener('click', () => {
+    if (pin.url) router.push(pin.url)
+  })
+
+  return el
+}
+
+/* ──────────────── pins fetch ──────────────── */
+
+const bbox = ref('')
+const { data: pins, refresh: refreshPins } = useFetch<Pin[]>('/api/map-pins', {
   server: false,
   immediate: false,
   query: { bbox },
 })
 
-// Debounced refresh to avoid excessive fetches on map interactions
 const refreshPinsDebounced = useDebounceFn(() => {
-  refreshPins()
-}, 800)
+  if (!map) return
+  const bounds = map.getBounds()
+  if (!bounds) return
 
-/* ───────────────── markers sync ───────────────── */
+  const next = googleBoundsToBbox(bounds)
+  if (bbox.value === next) return
+
+  bbox.value = next
+  refreshPins()
+}, 600)
+
+/* ──────────────── markers sync ──────────────── */
 
 function syncMarkers(google: typeof window.google) {
-  if (!map || !pins?.value) return
+  if (!map || !pins.value) return
 
   const incomingIds = new Set(pins.value.map((p) => p.id))
 
-  // Remove markers no longer present
-  for (const [id, marker] of markers) {
+  for (const [id, entry] of markers) {
     if (!incomingIds.has(id)) {
-      marker.setMap(null)
+      entry.marker.map = null
       markers.delete(id)
     }
   }
 
-  // Add / update markers
   for (const pin of pins.value) {
     if (markers.has(pin.id)) continue
 
-    const marker = new google.maps.Marker({
-      position: { lat: pin.lat, lng: pin.lng },
+    const el = createMarkerElement(pin)
+
+    const marker = new google.maps.marker.AdvancedMarkerElement({
       map,
-      optimized: true,
-      icon: symbolForType(pin.pin_type),
+      position: { lat: pin.lat, lng: pin.lng },
+      content: el,
     })
 
-    // Navigate to pin.url on click if provided
     marker.addListener('click', () => {
-      if (pin.url) {
-        router.push(pin.url)
-      }
+      if (!map || !PinPopoverClass) return
+
+      clearActiveMarker()
+      el.classList.add('is-selected')
+      activeMarkerEl = el
+
+      closePopover()
+      activePopover = new PinPopoverClass(
+        new google.maps.LatLng(pin.lat, pin.lng),
+        createPopoverContent(pin),
+        closePopover
+      )
+      activePopover.setMap(map)
     })
 
-    // Show label above pin on hover using InfoWindow
-    marker.addListener('mouseover', () => {
-      if (!infoWindow) return
-      const el = document.createElement('div')
-      el.className = 'pin-label'
-      el.textContent = pin.label
-      infoWindow.setContent(el)
-      infoWindow.open({ map: map!, anchor: marker })
-    })
-    marker.addListener('mouseout', () => {
-      infoWindow?.close()
-    })
-
-    markers.set(pin.id, marker)
+    markers.set(pin.id, { marker, el })
   }
 }
 
 /* ───────────────── lifecycle ───────────────── */
 
+const config = useRuntimeConfig()
+
 onMounted(async () => {
   const google = await useGoogleMaps()
+  PinPopoverClass = createPinPopoverClass(google)
 
-  /* Map init */
   map = new google.maps.Map(mapEl.value!, {
+    mapId: config.public.simpleMapId,
     gestureHandling: 'greedy',
     mapTypeControl: false,
     streetViewControl: false,
+    fullscreenControl: false,
   })
-
-  // Single InfoWindow instance reused for hover labels
-  infoWindow = new google.maps.InfoWindow({ disableAutoPan: true })
 
   map.fitBounds(boundsToGoogle(props.initialBounds))
 
-  /* Initialize bbox and fetch pins */
-  const initialBounds = map.getBounds()
-  if (initialBounds) {
-    bbox.value = googleBoundsToBbox(initialBounds)
-    refreshPinsDebounced()
+  map.addListener('dragstart', () => (isInteracting = true))
+  map.addListener('zoom_changed', () => (isInteracting = true))
+  map.addListener('bounds_changed', () => isInteracting && (needsFetchAfterInteraction = true))
+
+  map.addListener('idle', () => {
+    if (!isInteracting) return
+    isInteracting = false
+    if (needsFetchAfterInteraction) {
+      needsFetchAfterInteraction = false
+      refreshPinsDebounced()
+    }
+  })
+
+  const bounds = map.getBounds()
+  if (bounds) {
+    bbox.value = googleBoundsToBbox(bounds)
+    refreshPins()
   }
 
-  /* Address autocomplete */
   autocomplete = new google.maps.places.Autocomplete(inputEl.value!, {
     fields: ['geometry'],
     componentRestrictions: { country: 'fr' },
@@ -178,32 +329,26 @@ onMounted(async () => {
 
     if (place.geometry.viewport) {
       map!.fitBounds(place.geometry.viewport)
-      bbox.value = googleBoundsToBbox(place.geometry.viewport)
-      refreshPinsDebounced()
+    } else if (place.geometry.location) {
+      map!.setCenter(place.geometry.location)
+      map!.setZoom(15)
+    }
+
+    if (place.geometry.location) {
+      setSearchMarker(place.geometry.location)
     }
   })
-
-  /* Map move → bbox update */
-  map.addListener('idle', () => {
-    const bounds = map!.getBounds()
-    if (!bounds) return
-    bbox.value = googleBoundsToBbox(bounds)
-    refreshPinsDebounced()
-  })
-
-  syncMarkers(google)
 })
 
 onBeforeUnmount(() => {
-  markers.forEach((m) => m.setMap(null))
+  closePopover()
+  markers.forEach((m) => (m.marker.map = null))
   markers.clear()
   map = null
 })
 
-/* ───────────────── watch pins ───────────────── */
-
 watch(
-  () => pins?.value,
+  () => pins.value,
   async () => {
     if (!map) return
     const google = await useGoogleMaps()
@@ -215,34 +360,17 @@ watch(
 
 <template>
   <div class="map-wrapper">
-    <input ref="inputEl" type="text" placeholder="Rechercher une adresse" class="address-input" />
-
+    <input ref="inputEl" class="address-input" placeholder="Rechercher une adresse" />
     <div class="map-container">
       <div ref="mapEl" class="map" />
-
-      <!-- <div v-if="pending" class="map-loading">Chargement…</div> -->
     </div>
   </div>
 </template>
 
-<style scoped>
-.map-container {
-  position: relative;
-}
-
+<style>
 .map {
   height: 500px;
   width: 100%;
-}
-
-.map-loading {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.6);
-  font-weight: 600;
 }
 
 .address-input {
@@ -251,15 +379,83 @@ watch(
   margin-bottom: 8px;
 }
 
-/* Hide the default Google Maps InfoWindow close icon */
-:global(.gm-ui-hover-effect) {
-  display: none !important;
+/* ───────── markers ───────── */
+
+.pin-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transform-origin: center;
+  transition:
+    transform 120ms ease,
+    filter 120ms ease;
 }
 
-/* Optional styling for our hover label content */
+.pin-marker svg {
+  transition: transform 120ms ease;
+}
+
+/* Hover */
+.pin-marker:hover {
+  transform: translateY(-2px) scale(1.15);
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.25));
+}
+
+/* Selected */
+.pin-marker.is-selected {
+  transform: translateY(-4px) scale(1.25);
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.35));
+}
+
+.pin-marker.is-selected::after {
+  content: '';
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-radius: 9999px;
+  border: 2px solid currentColor;
+  opacity: 0.35;
+}
+
+/* ───────── popover ───────── */
+
+.pin-popover {
+  position: absolute;
+  z-index: 1000;
+  pointer-events: auto;
+}
+
+.popover-card {
+  width: 280px;
+  position: relative;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+  transform: translate(-50%, -100%);
+  cursor: pointer;
+}
+
+.popover-footer {
+  padding: 10px 12px;
+}
+
 .pin-label {
   font-weight: 600;
-  color: #0a2540;
   padding: 4px 6px;
+}
+
+.popover-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: 9999px;
+  background: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 </style>
