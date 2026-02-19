@@ -39,6 +39,6 @@ import type { ReferenceWithMeta } from '~/types/reference'
 const props = defineProps<{ realisation: ReferenceWithMeta }>()
 
 const label = computed(() => {
-  return `${tasks[props.realisation.type]} ${typologies[props.realisation.category].withPrefix}`
+  return `${tasks.find((task) => task.value === props.realisation.type)?.label} ${typologies[props.realisation.category].withPrefix}`
 })
 </script>

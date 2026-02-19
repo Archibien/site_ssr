@@ -5,6 +5,7 @@ import type { City } from '~/types/places'
 import { cities as allCities } from '~/data/cities'
 import { departments } from '~/data/departments'
 import { questions } from '~/data/citiesQuestions'
+import { useIntersectionObserver } from '@vueuse/core'
 
 const route = useRoute()
 const { depCode, postCode, citySlug } = route.params
@@ -26,6 +27,9 @@ const { data, error } = await useAsyncData<DepResponse>(
 )
 const closeCities = allCities[depCode]
 const prefix = closeCities.find((c) => c.url === route.path)?.prefix
+// TODO: update here
+// const city = closeCities.find((c) => c.post_code === postCode && c.slug === citySlug)
+const city = closeCities.find((c) => c.post_code === postCode)
 const department = departments[depCode]
 const title = ref(`Notre sélection des meilleurs architectes ${prefix}`)
 const cityQuestions = { questions: [], title: '' }
@@ -39,6 +43,21 @@ onMounted(async () => {
   // if we should keep the local/globalphone number or not
   setPhone(department.phone)
 })
+// Client-side map logic
+const mapContainer = ref<HTMLElement | null>(null)
+const mapVisible = ref(false)
+
+// Load map only when visible
+useIntersectionObserver(
+  mapContainer,
+  ([entry]) => {
+    if (entry.isIntersecting) {
+      mapVisible.value = true
+    }
+  },
+  { threshold: 0.1 }
+)
+
 useSeoMeta({
   title,
   ogTitle: title,
@@ -52,7 +71,7 @@ useSeoMeta({
     <SectionsMedias />
     <section class="py-xl lg:py-xxl app-container">
       <h2 class="text-darkblue font-semibold text-title-l mb-min sm:mb-xs text-center">
-        Comparez et choisissez votre architecte {{ prefix }} avec Archibien
+        Comparez et choisissez votre architecte (pour votre projet) {{ prefix }} avec Archibien
       </h2>
       <h3 class="text-darkblue text-title-m mb-l sm:mb-xl text-center">
         Notre métier : vous accompagner dans votre projet architectural
@@ -75,6 +94,15 @@ useSeoMeta({
     </section>
   </section>
   <div class="highlight-bottom bg-gray-200" />
+
+  <!-- Map section -->
+  <section class="max-w-5xl mx-auto mt-xl lg:mt-xxl">
+    <div ref="mapContainer" style="min-height: 400px">
+      <ClientOnly>
+        <MapView v-if="mapVisible" :initial-bounds="city.bounds" />
+      </ClientOnly>
+    </div>
+  </section>
 
   <!-- Project section -->
   <section class="mt-xl lg:mt-xxl">

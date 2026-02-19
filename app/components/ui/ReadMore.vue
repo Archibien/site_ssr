@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="text-gray-600 text-para">
+    <p class="text-gray-600 text-para whitespace-break-spaces">
       {{ contentDisplayed }}
     </p>
     <div

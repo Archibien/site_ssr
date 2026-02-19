@@ -33,7 +33,9 @@ const showCopyAlert = ref(false)
 // Computed properties
 const typology = typologies.find((c) => c.slug === data.value?.typology_slug || null)
 const category = computed(() => typologiesLabels[data.value?.reference.category])
-const action = computed(() => tasks[data.value?.reference.type])
+const action = computed(
+  () => tasks.find((task) => task.value === data.value?.reference.type)?.label
+)
 
 const actionWithPrefix = computed(() => {
   if (action.value === 'Autre') {
@@ -117,7 +119,7 @@ const renderedAt = useState('rendered-at', () => new Date().toISOString())
     <div class="flex flex-col md:flex-row justify-between items-start">
       <div class="w-full md:w-2/3 md:pr-l mb-m md:mb-0">
         <div class="flex items-center mb-l md:mb-xl">
-          <NuxtLink :to="data.reference.agency.url" class="flex-shrink-0">
+          <NuxtLink :to="data.reference.agency.url" class="shrink-0">
             <div
               class="mx-auto rounded-full shadow-sm w-xl h-xl overflow-hidden mr-5 flex justify-center items-center">
               <img
@@ -133,7 +135,9 @@ const renderedAt = useState('rendered-at', () => new Date().toISOString())
             </div>
           </NuxtLink>
           <p class="text-gray-600">
-            {{ `Une référence ${data.meta.archis ? 'de ' + data.meta.archis : ''}` }} du cabinet
+            {{
+              `Une référence ${data.meta.archis ? 'de ' + data.meta.archis : ''} ${data.reference.agency.is_subscribed ? 'du cabinet' : 'de'}`
+            }}
             <NuxtLink
               :to="data.reference.agency.url"
               class="link-bold font-semibold text-blue hover:text-blue-700 transition-colors duration-200 ease-in-out">

@@ -31,15 +31,10 @@ const title = shallowRef(`Notre sélection des meilleurs architectes ${depWithPr
 const cities = allCities[code]
 
 // Client-side map logic
-/* -----------------------
-   State
------------------------- */
 const mapContainer = ref<HTMLElement | null>(null)
 const mapVisible = ref(false)
 
-/* -----------------------
-   Load map only when visible
------------------------- */
+// Load map only when visible
 useIntersectionObserver(
   mapContainer,
   ([entry]) => {
@@ -49,7 +44,6 @@ useIntersectionObserver(
   },
   { threshold: 0.1 }
 )
-const renderedAt = useState('rendered-at', () => new Date().toISOString())
 useSeoMeta({
   title,
 })
@@ -61,8 +55,8 @@ useSeoMeta({
     <SectionsMedias />
     <section class="py-xl lg:py-xxl app-container">
       <h2 class="text-darkblue font-semibold text-title-l mb-min sm:mb-xs text-center">
-        Comparez et choisissez votre architecte {{ dep.prefix2 }} {{ dep.department }} avec
-        Archibien
+        Comparez et choisissez votre architecte (pour votre projet) {{ dep.prefix2 }}
+        {{ dep.department }} avec Archibien
       </h2>
       <h3 class="text-darkblue text-title-m mb-l sm:mb-xl text-center">
         Notre métier : vous accompagner dans votre projet architectural
@@ -85,6 +79,15 @@ useSeoMeta({
     </section>
   </section>
   <div class="highlight-bottom bg-gray-200" />
+
+  <!-- Map section -->
+  <section class="max-w-5xl mx-auto mt-xl lg:mt-xxl">
+    <div ref="mapContainer" style="min-height: 400px">
+      <ClientOnly>
+        <MapView v-if="mapVisible" :initial-bounds="dep.bounds" />
+      </ClientOnly>
+    </div>
+  </section>
 
   <!-- Project section -->
   <section class="mt-xl lg:mt-xxl">
@@ -130,15 +133,6 @@ useSeoMeta({
   <LazySectionsContact class="mt-xl lg:mt-xxl" />
 
   <LazySectionsQuestions class="mt-xl lg:mt-xxl" />
-
-  <section class="max-w-[1024px] mx-auto mb-4 mt-20">
-    <div ref="mapContainer" style="min-height: 400px">
-      <ClientOnly>
-        <MapView v-if="mapVisible" :initial-bounds="dep.bounds" />
-      </ClientOnly>
-    </div>
-    <p>Debug (rendered at) : {{ renderedAt }}</p>
-  </section>
 
   <LazySectionsCities
     class="mt-xl lg:mt-xxl"

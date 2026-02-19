@@ -1,6 +1,6 @@
 <template>
   <Head>
-    <Link
+    <NuxtLink
       rel="preload"
       as="image"
       href="/img/hero-768.jpg"
@@ -39,6 +39,16 @@
     </section>
   </section>
   <div class="highlight-bottom bg-gray-200" />
+
+  <!-- Map section
+  <section class="max-w-5xl mx-auto mt-xl lg:mt-xxl">
+    <div ref="mapContainer" style="min-height: 400px">
+      <ClientOnly>
+        <MapView v-if="mapVisible" :initial-bounds="initialBounds" />
+      </ClientOnly>
+    </div>
+  </section>
+  -->
 
   <!-- Project section -->
   <section class="mt-xl lg:mt-xxl">
@@ -90,4 +100,25 @@ type Response = {
 const { data } = await useAsyncData<Response>(`carousels:home`, () => $fetch('/api/home'), {
   server: true,
 })
+
+// Client-side map logic
+// const mapContainer = ref<HTMLElement | null>(null)
+// const mapVisible = ref(false)
+
+// Load map only when visible
+// useIntersectionObserver(
+//   mapContainer,
+//   ([entry]) => {
+//     if (entry.isIntersecting) {
+//       mapVisible.value = true
+//     }
+//   },
+//   { threshold: 0.1 }
+// )
+// const initialBounds = {
+//   west: -6.67,
+//   south: 43.66,
+//   east: 13.38,
+//   north: 50.32,
+// }
 </script>

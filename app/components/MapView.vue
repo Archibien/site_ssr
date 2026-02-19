@@ -3,6 +3,7 @@
 import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
 import { useGoogleMaps } from '@/composables/useGoogleMaps'
 import { useDebounceFn } from '@vueuse/core'
+import { categories, tasks } from '~/assets/js/labels'
 
 /* ───────────────── types ───────────────── */
 
@@ -34,6 +35,9 @@ const props = defineProps<{ initialBounds: Bounds }>()
 
 const mapEl = ref<HTMLDivElement | null>(null)
 const inputEl = ref<HTMLInputElement | null>(null)
+
+const selectedCategory = ref<string | ''>('')
+const selectedProject = ref<string | ''>('')
 
 let map: google.maps.Map | null = null
 let autocomplete: google.maps.places.Autocomplete | null = null
@@ -73,19 +77,30 @@ function colorForType(type: Pin['pin_type']) {
 
 function setSearchMarker(position: google.maps.LatLng) {
   if (!map) return
+  if (searchMarker) {
+    searchMarker.setMap(null)
+    searchMarker = null
+  }
+  searchMarker = new google.maps.Marker({
+    map,
+    position,
+    clickable: false,
+    zIndex: 999,
+  })
+}
 
-  // Remove previous marker
+function clearFilters() {
+  selectedCategory.value = ''
+  selectedProject.value = ''
+
+  if (inputEl.value) inputEl.value.value = ''
+
   if (searchMarker) {
     searchMarker.setMap(null)
     searchMarker = null
   }
 
-  searchMarker = new google.maps.Marker({
-    map,
-    position,
-    clickable: false,
-    zIndex: 999, // always above pins
-  })
+  refreshPins()
 }
 
 /* ───────────────── SVG paths ───────────────── */
@@ -111,7 +126,6 @@ function createMarkerElement(pin: Pin) {
       />
     </svg>
   `
-
   return el
 }
 
@@ -221,7 +235,11 @@ const bbox = ref('')
 const { data: pins, refresh: refreshPins } = useFetch<Pin[]>('/api/map-pins', {
   server: false,
   immediate: false,
-  query: { bbox },
+  query: {
+    bbox,
+    category: selectedCategory,
+    project: selectedProject,
+  },
 })
 
 const refreshPinsDebounced = useDebounceFn(() => {
@@ -356,11 +374,46 @@ watch(
   },
   { deep: true }
 )
-</script>
 
+watch([selectedCategory, selectedProject], () => {
+  if (!map) return
+  refreshPins()
+})
+</script>
 <template>
   <div class="map-wrapper">
-    <input ref="inputEl" class="address-input" placeholder="Rechercher une adresse" />
+    <div class="map-controls">
+      <input ref="inputEl" class="address-input" placeholder="Rechercher une adresse" />
+
+      <select v-model="selectedProject" class="map-select">
+        <option value="">Tous les projets</option>
+        <option v-for="project in tasks" :key="project.value" :value="project.value">
+          {{ project.label }}
+        </option>
+      </select>
+
+      <select v-model="selectedCategory" class="map-select">
+        <option value="">Toutes les catégories</option>
+        <option v-for="category in categories" :key="category.value" :value="category.value">
+          {{ category.label }}
+        </option>
+      </select>
+
+      <button
+        class="map-clear"
+        @click="clearFilters"
+        v-if="selectedCategory || selectedProject || (inputEl && inputEl.value)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="size-6 text-blue" viewBox="0 0 20 20">
+          <!-- Icon from HeroIcons by Refactoring UI Inc - https://github.com/tailwindlabs/heroicons/blob/master/LICENSE -->
+          <path
+            fill="currentColor"
+            fill-rule="evenodd"
+            d="M10 18a8 8 0 1 0 0-16a8 8 0 0 0 0 16M8.28 7.22a.75.75 0 0 0-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 1 0 1.06 1.06L10 11.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L11.06 10l1.72-1.72a.75.75 0 0 0-1.06-1.06L10 8.94z"
+            clip-rule="evenodd" />
+        </svg>
+      </button>
+    </div>
+
     <div class="map-container">
       <div ref="mapEl" class="map" />
     </div>
@@ -376,7 +429,38 @@ watch(
 .address-input {
   width: 100%;
   padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  background: white;
+  font-size: 14px;
+}
+
+/* ───────── controls ───────── */
+
+.map-controls {
+  display: flex;
+  gap: 8px;
   margin-bottom: 8px;
+}
+
+.map-select {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  background: white;
+  font-size: 14px;
+}
+
+.map-clear {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  background: #f9fafb;
+  cursor: pointer;
+}
+
+.map-clear:hover {
+  background: #f3f4f6;
 }
 
 /* ───────── markers ───────── */
@@ -396,13 +480,11 @@ watch(
   transition: transform 120ms ease;
 }
 
-/* Hover */
 .pin-marker:hover {
   transform: translateY(-2px) scale(1.15);
   filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.25));
 }
 
-/* Selected */
 .pin-marker.is-selected {
   transform: translateY(-4px) scale(1.25);
   filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.35));
@@ -439,11 +521,6 @@ watch(
 
 .popover-footer {
   padding: 10px 12px;
-}
-
-.pin-label {
-  font-weight: 600;
-  padding: 4px 6px;
 }
 
 .popover-close {

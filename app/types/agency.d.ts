@@ -45,7 +45,7 @@ export interface AgencyDetailedWorkZone {
 
 export interface AgencyDetails {
   name: string
-  logo: {
+  logo?: {
     default: string
     original: string
   }
@@ -53,12 +53,17 @@ export interface AgencyDetails {
     hd: string
     original: string
   }
+  mention_name: string
+  mention_first_name: string
+  mention_last_name: string
+  phone?: string
+  email?: string
   is_subscribed: boolean
   public_id: string
   description: string
   project_types: string[]
   project_categories: string[]
-  architectes: string[]
+  architectes?: string[]
   copyright_banner: string
   type: string
   work_zones: AgencyDetailedWorkZone[]

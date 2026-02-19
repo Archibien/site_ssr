@@ -11,11 +11,12 @@ export default defineEventHandler(async (event) => {
   }
 
   const config = useRuntimeConfig()
-  console.log('Fetching API map-pins with bbox:', bbox)
   // Forward request to Django public API
   return await $fetch(`${config.public.apiBase}/map-pins/`, {
     query: {
       bbox,
+      category: query.category,
+      project: query.project,
     },
 
     // VERY IMPORTANT:

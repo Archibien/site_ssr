@@ -101,6 +101,9 @@ export default defineNuxtConfig({
     },
     '/sitemap.xml': { isr: 3600 },
     '/sitemap-*.xml': { isr: 60 * 60 * 24 },
+    '/france/ile-de-france/75-arrondissement-de-paris/75001-paris/architectes/': {
+      redirect: { to: '/france/ile-de-france/75-arrondissement-de-paris/', statusCode: 301 },
+    },
     ...buildRedirectRoutesRules(),
   },
 

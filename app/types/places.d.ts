@@ -23,10 +23,18 @@ export interface City {
   department: string
   region: string
   post_code: string
+  dep_code: string
   lat: number
   lng: number
   url: string
   prefix: string
+  prefix2?: string
+  bounds: {
+    north: number
+    south: number
+    east: number
+    west: number
+  }
 }
 
 export interface ImageMeta {

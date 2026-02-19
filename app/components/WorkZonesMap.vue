@@ -99,7 +99,6 @@ function renderCircles(google: typeof window.google) {
     const center = new google.maps.LatLng(area.lat, area.lng)
     bounds.extend(center)
     const radius = scaleRadiusByZoom(area.radius, currentZoom)
-    console.log('Rendering circle at', center.toString(), 'with radius', radius)
     const circle = new google.maps.Circle({
       map,
       center,

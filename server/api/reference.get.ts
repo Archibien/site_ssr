@@ -2,8 +2,6 @@ export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig()
   const query = getQuery(event)
 
-  console.log('Fetching reference with url:', query.url)
-
   if (!query.url) {
     throw createError({ statusCode: 400, statusMessage: 'Missing url' })
   }

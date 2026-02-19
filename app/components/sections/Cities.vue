@@ -15,7 +15,7 @@
               :to="city.url"
               class="text-gray-600 hover:text-link"
               no-prefetch>
-              Architecte {{ city.prefix }}
+              Architecte {{ city.prefix2 ? city.prefix2 : city.prefix }}
             </NuxtLink>
           </div>
         </template>

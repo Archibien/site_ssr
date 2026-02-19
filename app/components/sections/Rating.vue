@@ -25,7 +25,7 @@
             >
           </div>
           <a
-            href="https://search.google.com/local/reviews?placeid=ChIJpeB9Kq7uBUgRSHw6l8SA2e8&q=Archibien&hl=fr&gl=FR"
+            href="https://share.google/2UUreY3oXjmr7CEXt"
             target="_blank"
             rel="noopener"
             class="justify-center flex items-center space-x-1">

@@ -1,11 +1,203 @@
 [
   {
-    "from": "/agence/idf/93300-seine-saint-denis/aubervilliers/testouille/",
-    "to": "/agence/idf/93300-seine-saint-denis/aubervilliers/t-sg-architecte/"
+    "from": "/agence/nouvelle-aquitaine/33300-gironde/bordeaux/winga/",
+    "to": "/agence/nouvelle-aquitaine/33300-gironde/bordeaux/w-eg-architecte/"
   },
   {
-    "from": "/agence/idf/93300-seine-saint-denis/aubervilliers/atelier-abc/",
-    "to": "/agence/idf/93300-seine-saint-denis/aubervilliers/a-cb-architecte-d-interieur/"
+    "from": "/agence/idf/75014-paris/paris/ixref/",
+    "to": "/agence/idf/75014-paris/paris/i-db-architecte/"
+  },
+  {
+    "from": "/agence/idf/92340-hauts-de-seine/bourg-la-reine/kaizo-studio/",
+    "to": "/agence/idf/92340-hauts-de-seine/bourg-la-reine/k-tm-architecte-d-interieur/"
+  },
+  {
+    "from": "/agence/idf/75017-paris/paris/trioem/",
+    "to": "/agence/idf/75017-paris/paris/t-ol-architecte-d-interieur/"
+  },
+  {
+    "from": "/agence/normandie/50400-manche/granville/matiere-cosmique-sarah-gigot-architecte/",
+    "to": "/agence/normandie/50400-manche/granville/m-sg-architecte/"
+  },
+  {
+    "from": "/agence/idf/75020-paris/paris/clement-dauvilliers-architecte/",
+    "to": "/agence/idf/75020-paris/paris/c-cd-architecte/"
+  },
+  {
+    "from": "/agence/provence-alpes-cote-dazur/13420-bouches-du-rhone/gemenos/b-s-architecte/",
+    "to": "/agence/provence-alpes-cote-dazur/13420-bouches-du-rhone/gemenos/b-bs-architecte/"
+  },
+  {
+    "from": "/agence/provence-alpes-cote-dazur/06100-alpes-maritimes/nice/bernard-vallotton-architecte/",
+    "to": "/agence/provence-alpes-cote-dazur/06100-alpes-maritimes/nice/b-bv-architecte/"
+  },
+  {
+    "from": "/agence/idf/78420-yvelines/carrieres-sur-seine/noemie-savary-architecte/",
+    "to": "/agence/idf/78420-yvelines/carrieres-sur-seine/n-ns-architecte/"
+  },
+  {
+    "from": "/agence/idf/75019-paris/paris/studio-tigre/",
+    "to": "/agence/idf/75019-paris/paris/s-ra-architecte/"
+  },
+  {
+    "from": "/agence/pays-de-la-loire/44000-loire-atlantique/nantes/hute-architecture/",
+    "to": "/agence/pays-de-la-loire/44000-loire-atlantique/nantes/h-sd-architecte/"
+  },
+  {
+    "from": "/agence/normandie/76600-seine-maritime/le-havre/atelier-orzan/",
+    "to": "/agence/normandie/76600-seine-maritime/le-havre/a-tb-architecte/"
+  },
+  {
+    "from": "/agence/bretagne/22110-cotes-darmor/rostrenen/bavardes/",
+    "to": "/agence/bretagne/22110-cotes-darmor/rostrenen/b-hl-architecte/"
+  },
+  {
+    "from": "/agence/idf/92800-hauts-de-seine/puteaux/utopia-par-lmarchand/",
+    "to": "/agence/idf/92800-hauts-de-seine/puteaux/s-lm-architecte/"
+  },
+  {
+    "from": "/agence/idf/75019-paris/paris/atelier-ab/",
+    "to": "/agence/idf/75019-paris/paris/a-ab-architecte/"
+  },
+  {
+    "from": "/agence/nouvelle-aquitaine/33200-gironde/bordeaux/studiorod/",
+    "to": "/agence/nouvelle-aquitaine/33200-gironde/bordeaux/s-rc-architecte/"
+  },
+  {
+    "from": "/agence/bretagne/56600-morbihan/lanester/emma-meilhat/",
+    "to": "/agence/bretagne/56600-morbihan/lanester/e-em-architecte/"
+  },
+  {
+    "from": "/agence/idf/78350-yvelines/jouy-en-josas/lomholt-architecte/",
+    "to": "/agence/idf/78350-yvelines/jouy-en-josas/l-rl-architecte/"
+  },
+  {
+    "from": "/agence/idf/75019-paris/paris/contexo/",
+    "to": "/agence/idf/75019-paris/paris/c-ms-architecte/"
+  },
+  {
+    "from": "/agence/provence-alpes-cote-dazur/13001-bouches-du-rhone/marseille/chapitre/",
+    "to": "/agence/provence-alpes-cote-dazur/13001-bouches-du-rhone/marseille/c-al-architecte/"
+  },
+  {
+    "from": "/agence/auvergne-rhone-alpes/38100-isere/grenoble/mewe-partners/",
+    "to": "/agence/auvergne-rhone-alpes/38100-isere/grenoble/m-zt-architecte/"
+  },
+  {
+    "from": "/agence/provence-alpes-cote-dazur/13006-bouches-du-rhone/marseille/studio-osma/",
+    "to": "/agence/provence-alpes-cote-dazur/13006-bouches-du-rhone/marseille/s-lp-architecte/"
+  },
+  {
+    "from": "/agence/idf/93310-seine-saint-denis/le-pre-saint-gervais/brom/",
+    "to": "/agence/idf/93310-seine-saint-denis/le-pre-saint-gervais/b-wr-architecte/"
+  },
+  {
+    "from": "/agence/idf/93400-seine-saint-denis/saint-ouen-sur-seine/cura-architecture/",
+    "to": "/agence/idf/93400-seine-saint-denis/saint-ouen-sur-seine/c-mt-architecte/"
+  },
+  {
+    "from": "/agence/pays-de-la-loire/44400-loire-atlantique/reze/maelle-le-dantec-ei/",
+    "to": "/agence/pays-de-la-loire/44400-loire-atlantique/reze/m-ml-architecte/"
+  },
+  {
+    "from": "/agence/pays-de-la-loire/44230-loire-atlantique/saint-sebastien-sur-loire/juan-torres-architecte-ei/",
+    "to": "/agence/pays-de-la-loire/44230-loire-atlantique/saint-sebastien-sur-loire/c-jt-architecte/"
+  },
+  {
+    "from": "/agence/idf/92300-hauts-de-seine/levallois-perret/tom-pariente-architecture/",
+    "to": "/agence/idf/92300-hauts-de-seine/levallois-perret/t-tp-architecte/"
+  },
+  {
+    "from": "/agence/idf/75020-paris/paris/mute/",
+    "to": "/agence/idf/75020-paris/paris/m-as-architecte/"
+  },
+  {
+    "from": "/agence/occitanie/34070-herault/montpellier/bako-studio/",
+    "to": "/agence/occitanie/34070-herault/montpellier/b-oa-architecte/"
+  },
+  {
+    "from": "/agence/pays-de-la-loire/44100-loire-atlantique/nantes/sophie-gordeeff-design-dinterieur/",
+    "to": "/agence/pays-de-la-loire/44100-loire-atlantique/nantes/s-sg-architecte-d-interieur/"
+  },
+  {
+    "from": "/agence/bretagne/35000-ille-et-vilaine/rennes/louise-evanno/",
+    "to": "/agence/bretagne/35000-ille-et-vilaine/rennes/l-le-architecte-d-interieur/"
+  },
+  {
+    "from": "/agence/idf/75011-paris/paris/lume-architectes/",
+    "to": "/agence/idf/75011-paris/paris/l-la-architecte/"
+  },
+  {
+    "from": "/agence/nouvelle-aquitaine/33000-gironde/bordeaux/sesame-architecture/",
+    "to": "/agence/nouvelle-aquitaine/33000-gironde/bordeaux/s-am-architecte/"
+  },
+  {
+    "from": "/agence/nouvelle-aquitaine/79260-deux-sevres/francois/archimyni/",
+    "to": "/agence/nouvelle-aquitaine/79260-deux-sevres/francois/a-mn-architecte-d-interieur/"
+  },
+  {
+    "from": "/agence/auvergne-rhone-alpes/69420-rhone/condrieu/transition-architecture/",
+    "to": "/agence/auvergne-rhone-alpes/69420-rhone/condrieu/t-cc-architecte/"
+  },
+  {
+    "from": "/agence/grande-terre/97160-guadeloupe/le-moule/raphaele-violot-uger-architecte-dplg/",
+    "to": "/agence/grande-terre/97160-guadeloupe/le-moule/r-ru-architecte/"
+  },
+  {
+    "from": "/agence/idf/75010-paris/paris/ankr/",
+    "to": "/agence/idf/75010-paris/paris/a-al-architecte/"
+  },
+  {
+    "from": "/agence/provence-alpes-cote-dazur/13005-bouches-du-rhone/marseille/zicher-architecture/",
+    "to": "/agence/provence-alpes-cote-dazur/13005-bouches-du-rhone/marseille/z-cb-architecte/"
+  },
+  {
+    "from": "/agence/idf/75012-paris/paris/acbm/",
+    "to": "/agence/idf/75012-paris/paris/a-cb-architecte/"
+  },
+  {
+    "from": "/agence/idf/75010-paris/paris/bama-studio/",
+    "to": "/agence/idf/75010-paris/paris/b-gm-architecte/"
+  },
+  {
+    "from": "/agence/nouvelle-aquitaine/33320-gironde/eysines/ei-illourmane/",
+    "to": "/agence/nouvelle-aquitaine/33320-gironde/eysines/e-ai-architecte/"
+  },
+  {
+    "from": "/agence/grand-est/67100-bas-rhin/strasbourg/mmuma-architectes-mille-mais-une-maniere-architectes/",
+    "to": "/agence/grand-est/67100-bas-rhin/strasbourg/m-yr-architecte/"
+  },
+  {
+    "from": "/agence/bretagne/22000-cotes-darmor/saint-brieuc/ensembles/",
+    "to": "/agence/bretagne/22000-cotes-darmor/saint-brieuc/e-lh-architecte/"
+  },
+  {
+    "from": "/agence/auvergne-rhone-alpes/69001-rhone/lyon/uc-architecte/",
+    "to": "/agence/auvergne-rhone-alpes/69001-rhone/lyon/u-uc-architecte/"
+  },
+  {
+    "from": "/agence/bretagne/35200-ille-et-vilaine/rennes/vabel-architectes/",
+    "to": "/agence/bretagne/35200-ille-et-vilaine/rennes/v-va-architecte/"
+  },
+  {
+    "from": "/agence/nouvelle-aquitaine/17340-charente-maritime/chatelaillon-plage/olivier-butin-architecte-dplg/",
+    "to": "/agence/nouvelle-aquitaine/17340-charente-maritime/chatelaillon-plage/o-ob-architecte/"
+  },
+  {
+    "from": "/agence/bruxelles/1180-/uccle/architecture-corbiau/",
+    "to": "/agence/bruxelles/1180-/uccle/a-hc-architecte/"
+  },
+  {
+    "from": "/agence/idf/75011-paris/paris/ilaria-festa-architecture/",
+    "to": "/agence/idf/75011-paris/paris/i-if-architecte/"
+  },
+  {
+    "from": "/agence/nouvelle-aquitaine/33000-gironde/bordeaux/ecart-trace/",
+    "to": "/agence/nouvelle-aquitaine/33000-gironde/bordeaux/e-tr-architecte/"
+  },
+  {
+    "from": "/agence/grand-est/67100-bas-rhin/strasbourg/ussa-inna/",
+    "to": "/agence/grand-est/67100-bas-rhin/strasbourg/ü-ll-architecte/"
   },
   {
     "from": "/agence/idf/75019-paris/paris/maison-insula/",
@@ -14,6 +206,10 @@
   {
     "from": "/agence/corse/20000-corse-du-sud/ajaccio/kaza-architecture/",
     "to": "/agence/corse/20000-corse-du-sud/ajaccio/k-nl-architecte/"
+  },
+  {
+    "from": "/agence/idf/75017-paris/paris/architecte-medical-aamc/",
+    "to": "/agence/idf/75017-paris/paris/a-mc-architecte/"
   },
   {
     "from": "/agence/bretagne/22120-cotes-darmor/hillion/fva_francois-violi-architectes/",
@@ -29,7 +225,7 @@
   },
   {
     "from": "/agence/idf/92600-hauts-de-seine/asnieres-sur-seine/yy-studio/",
-    "to": "/agence/idf/92600-hauts-de-seine/asnieres-sur-seine/y-vb-architecte/"
+    "to": "/agence/idf/75017-paris/paris/y-vb-architecte/"
   },
   {
     "from": "/agence/idf/75014-paris/paris/klair/",
@@ -62,6 +258,10 @@
   {
     "from": "/agence/idf/75012-paris/paris/gabriele-grassi-architecte/",
     "to": "/agence/idf/75012-paris/paris/g-gg-architecte/"
+  },
+  {
+    "from": "/agence/idf/75018-paris/paris/atelier-mba/",
+    "to": "/agence/idf/75018-paris/paris/a-mb-architecte/"
   },
   {
     "from": "/agence/idf/75015-paris/paris/celine-pinto-architecte-architopies/",
@@ -120,6 +320,10 @@
     "to": "/agence/idf/75012-paris/paris/f-ii-architecte/"
   },
   {
+    "from": "/agence/occitanie/34250-herault/palavas-les-flots/atelier-cla/",
+    "to": "/agence/occitanie/34250-herault/palavas-les-flots/a-cl-architecte/"
+  },
+  {
     "from": "/agence/idf/75019-paris/paris/julie-alazard-architecte/",
     "to": "/agence/idf/75019-paris/paris/j-ja-architecte/"
   },
@@ -148,10 +352,6 @@
     "to": "/agence/occitanie/31000-haute-garonne/toulouse/a-aa-architecte/"
   },
   {
-    "from": "/agence/nouvelle-aquitaine/33100-gironde/bordeaux/laurie-cantin-architectures/",
-    "to": "/agence/nouvelle-aquitaine/33100-gironde/bordeaux/l-lc-architecte/"
-  },
-  {
     "from": "/agence/idf/75008-paris/paris/kaer-studio/",
     "to": "/agence/idf/56340-paris/paris/k-ed-architecte-d-interieur/"
   },
@@ -172,6 +372,10 @@
     "to": "/agence/ile-de-france/75011-paris/paris/r-rf-architecte/"
   },
   {
+    "from": "/agence/occitanie/31000-haute-garonne/toulouse/patio-b/",
+    "to": "/agence/occitanie/31000-haute-garonne/toulouse/p-bs-architecte/"
+  },
+  {
     "from": "/agence/pays-de-la-loire/44200-loire-atlantique/nantes/jl-architecture/",
     "to": "/agence/pays-de-la-loire/44200-loire-atlantique/nantes/j-jl-architecte/"
   },
@@ -185,7 +389,7 @@
   },
   {
     "from": "/agence/ile-de-france/75014-paris/paris/maison-bleue/",
-    "to": "/agence/ile-de-france/75014-paris/paris/m-fb-architecte/"
+    "to": "/agence/ile-de-france/75014-paris/paris/f-fb-architecte/"
   },
   {
     "from": "/agence/auvergne-rhone-alpes/69300-rhone/caluire-et-cuire/saj-architectes/",
@@ -424,10 +628,6 @@
     "to": "/agence/idf/75018-arrondissement-de-paris/paris/c-cf-architecte/"
   },
   {
-    "from": "/agence/pays-de-la-loire/44000-loire-atlantique/nantes/henry-lataix/",
-    "to": "/agence/pays-de-la-loire/44000-loire-atlantique/nantes/h-hl-architecte-d-interieur/"
-  },
-  {
     "from": "/agence/pays-de-la-loire/44000-loire-atlantique/nantes/maison-27bis/",
     "to": "/agence/pays-de-la-loire/44000-loire-atlantique/nantes/m-mh-architecte-d-interieur/"
   },
@@ -505,7 +705,7 @@
   },
   {
     "from": "/agence/normandie/50590-manche/hauteville-sur-mer/atelier-fyri/",
-    "to": "/agence/normandie/50590-manche/hauteville-sur-mer/a-cs-architecte/"
+    "to": "/agence/normandie/14000-calvados/caen/a-cs-architecte/"
   },
   {
     "from": "/agence/bretagne/35000-ille-et-vilaine/rennes/ici-et-ailleurs-architecture/",
@@ -533,7 +733,7 @@
   },
   {
     "from": "/agence/idf/92400-hauts-de-seine/courbevoie/codes/",
-    "to": "/agence/idf/92400-hauts-de-seine/courbevoie/c-cd-architecte-d-interieur/"
+    "to": "/agence/pays-de-la-loire/44000-loire-atlantique/nantes/c-cd-architecte-d-interieur/"
   },
   {
     "from": "/agence/idf/75015-arrondissement-de-paris/paris/atelier-caroline-durst/",
@@ -590,10 +790,6 @@
   {
     "from": "/agence/bretagne/35330-ille-et-vilaine/comblessac/pierre-alexandre-lahaie/",
     "to": "/agence/bretagne/35330-ille-et-vilaine/comblessac/p-pl-architecte-d-interieur/"
-  },
-  {
-    "from": "/agence/idf/75002-arrondissement-de-paris/paris/atelier-apcm/",
-    "to": "/agence/idf/75002-arrondissement-de-paris/paris/a-cm-architecte/"
   },
   {
     "from": "/agence/hauts-de-france/59493-nord/villeneuve-dascq/atelier-post/",
@@ -693,7 +889,7 @@
   },
   {
     "from": "/agence/auvergne-rhone-alpes/43770-haute-loire/chadrac/robin-denis-architecte/",
-    "to": "/agence/auvergne-rhone-alpes/43770-haute-loire/chadrac/r-rd-architecte/"
+    "to": "/agence/auvergne-rhone-alpes/43000-haute-loire/aiguilhe/r-rd-architecte/"
   },
   {
     "from": "/agence/auvergne-rhone-alpes/74000-haute-savoie/annecy/atelier-thibault-marcilly/",
@@ -841,7 +1037,7 @@
   },
   {
     "from": "/agence/idf/75012-arrondissement-de-paris/paris/atelier-24bis/",
-    "to": "/agence/idf/75012-arrondissement-de-paris/paris/a-jr-architecte/"
+    "to": "/agence/idf/75001-paris/paris/a-jr-architecte/"
   },
   {
     "from": "/agence/bretagne/35700-ille-et-vilaine/rennes/atelier-fezi/",
@@ -886,6 +1082,10 @@
   {
     "from": "/agence/idf/93500-seine-saint-denis/pantin/fabricare/",
     "to": "/agence/idf/75020-arrondissement-de-paris/paris/a-cb-architecte/"
+  },
+  {
+    "from": "/agence/idf/75014-arrondissement-de-paris/paris/studio-ise/",
+    "to": "/agence/idf/75014-arrondissement-de-paris/paris/s-gp-architecte/"
   },
   {
     "from": "/agence/idf/94400-val-de-marne/vitry-sur-seine/mc-architecture/",
@@ -961,7 +1161,7 @@
   },
   {
     "from": "/agence/grand-est/67100-bas-rhin/strasbourg/bureau-nautes/",
-    "to": "/agence/grand-est/67100-bas-rhin/strasbourg/b-ap-architecte/"
+    "to": "/agence/grand-est/67000-bas-rhin/strasbourg/p-ap-architecte/"
   },
   {
     "from": "/agence/idf/94130-val-de-marne/nogent-sur-marne/mathieu-durbec-architecture/",
@@ -1169,11 +1369,15 @@
   },
   {
     "from": "/agence/ile-de-france/75013-departement-de-paris/paris/timothee-jourdain-architecte/",
-    "to": "/agence/ile-de-france/75013-departement-de-paris/paris/t-tj-architecte/"
+    "to": "/agence/idf/75006-paris/paris/t-tj-architecte/"
   },
   {
     "from": "/agence/nouvelle-aquitaine/33150-gironde/cenon/keno-architectes/",
     "to": "/agence/nouvelle-aquitaine/33150-gironde/cenon/k-mm-architecte/"
+  },
+  {
+    "from": "/agence/nouvelle-aquitaine/86000-vienne/poitiers/helios-constantin-architecte/",
+    "to": "/agence/nouvelle-aquitaine/86000-vienne/poitiers/h-hc-architecte/"
   },
   {
     "from": "/agence/ile-de-france/75018-departement-de-paris/paris/atelier-428/",
@@ -1232,10 +1436,6 @@
     "to": "/agence/auvergne-rhone-alpes/69300-rhone/caluire-et-cuire/b-ba-architecte/"
   },
   {
-    "from": "/agence/pays-de-la-loire/44100-loire-atlantique/nantes/dl-interior-design/",
-    "to": "/agence/pays-de-la-loire/44100-loire-atlantique/nantes/d-dl-architecte-d-interieur/"
-  },
-  {
     "from": "/agence/ile-de-france/93100-seine-saint-denis/montreuil/rr-architecture/",
     "to": "/agence/ile-de-france/93100-seine-saint-denis/montreuil/r-rd-architecte/"
   },
@@ -1258,6 +1458,10 @@
   {
     "from": "/agence/bretagne/35000-ille-et-vilaine/rennes/ouest-atelier-darchitecture/",
     "to": "/agence/bretagne/35000-ille-et-vilaine/rennes/o-pl-architecte/"
+  },
+  {
+    "from": "/agence/ile-de-france/94400-val-de-marne/vitry-sur-seine/eddy-hardel/",
+    "to": "/agence/ile-de-france/94400-val-de-marne/vitry-sur-seine/e-eh-architecte/"
   },
   {
     "from": "/agence/bretagne/35000-ille-et-vilaine/rennes/atelier-belle-vue-era-architecture/",
@@ -1381,7 +1585,7 @@
   },
   {
     "from": "/agence/ile-de-france/75010-departement-de-paris/paris/paralleloa/",
-    "to": "/agence/ile-de-france/75010-departement-de-paris/paris/p-vi-architecte/"
+    "to": "/agence/ile-de-france/75010-arrondissement-de-paris/paris/p-vi-architecte/"
   },
   {
     "from": "/agence/pays-de-la-loire/44100-loire-atlantique/nantes/atelier-le-gall-architecture/",
@@ -1501,7 +1705,7 @@
   },
   {
     "from": "/agence/bourgogne-franche-comte/89700-yonne/tonnerre/alexiane-joly-architecture/",
-    "to": "/agence/bourgogne-franche-comte/89700-yonne/tonnerre/a-aj-architecte/"
+    "to": "/agence/grand-est/10340-aube/les-riceys/a-ac-architecte/"
   },
   {
     "from": "/agence/pays-de-la-loire/44000-loire-atlantique/nantes/figura/",
@@ -1521,7 +1725,7 @@
   },
   {
     "from": "/agence/auvergne-rhone-alpes/74100-haute-savoie/annemasse/pyrus/",
-    "to": "/agence/auvergne-rhone-alpes/74100-haute-savoie/annemasse/p-mp-architecte/"
+    "to": "/agence/auvergne-rhone-alpes/69600-rhone/oullins-pierre-benite/p-mp-architecte/"
   },
   {
     "from": "/agence/bretagne/35000-ille-et-vilaine/rennes/dear-desirs-despaces-architectes-rennais/",
@@ -1732,10 +1936,6 @@
     "to": "/agence/ile-de-france/75020-arrondissement-de-paris/paris/m-tp-architecte/"
   },
   {
-    "from": "/agence/ile-de-france/75007-arrondissement-de-paris/paris/23-aout-architecture/",
-    "to": "/agence/ile-de-france/75007-arrondissement-de-paris/paris/2-rt-architecte/"
-  },
-  {
     "from": "/agence/idf/75014-arrondissement-de-paris/paris/labrodavis/",
     "to": "/agence/idf/75014-arrondissement-de-paris/paris/l-cl-architecte/"
   },
@@ -1765,7 +1965,7 @@
   },
   {
     "from": "/agence/ile-de-france/75015-arrondissement-de-paris/paris/jean-dambrin/",
-    "to": "/agence/ile-de-france/75015-arrondissement-de-paris/paris/j-jd-architecte-d-interieur/"
+    "to": "/agence/ile-de-france/75015-arrondissement-de-paris/paris/s-jd-architecte-d-interieur/"
   },
   {
     "from": "/agence/grand-est/51100-marne/reims/pace-architectes/",
@@ -1789,7 +1989,7 @@
   },
   {
     "from": "/agence/bretagne/35200-ille-et-vilaine/rennes/guillaume-lesage-architecte/",
-    "to": "/agence/bretagne/35200-ille-et-vilaine/rennes/g-gl-architecte/"
+    "to": "/agence/bretagne/35200-ille-et-vilaine/rennes/l-gl-architecte/"
   },
   {
     "from": "/agence/provence-alpes-cote-dazur/13006-bouches-du-rhone/marseille/atelier-maxime-sollier/",
@@ -1818,14 +2018,6 @@
   {
     "from": "/agence/ile-de-france/75011-departement-de-paris/paris/jerome-malpel/",
     "to": "/agence/ile-de-france/75011-departement-de-paris/paris/j-jm-architecte/"
-  },
-  {
-    "from": "/agence/hauts-de-france/60410-oise/villeneuve-sur-verberie/ir-architecte/",
-    "to": "/agence/hauts-de-france/60410-oise/villeneuve-sur-verberie/i-ir-architecte/"
-  },
-  {
-    "from": "/agence/bretagne/35000-ille-et-vilaine/rennes/collectif-como/",
-    "to": "/agence/bretagne/35000-ille-et-vilaine/rennes/c-cg-architecte/"
   },
   {
     "from": "/agence/ile-de-france/92400-hauts-de-seine/courbevoie/justine-fernandes-architecture/",
@@ -1877,7 +2069,7 @@
   },
   {
     "from": "/agence/pays-de-la-loire/44400-loire-atlantique/reze/baltique/",
-    "to": "/agence/pays-de-la-loire/44400-loire-atlantique/reze/b-ct-architecte/"
+    "to": "/agence/pays-de-la-loire/44400-loire-atlantique/reze/b-dp-architecte/"
   },
   {
     "from": "/agence/bretagne/35000-ille-et-vilaine/rennes/pipard-simon/",
@@ -2025,7 +2217,7 @@
   },
   {
     "from": "/agence/ile-de-france/75011-arrondissement-de-paris/paris/solidor-architecture/",
-    "to": "/agence/ile-de-france/75011-arrondissement-de-paris/paris/s-sa-architecte/"
+    "to": "/agence/bretagne/35000-ille-et-vilaine/rennes/s-sa-architecte/"
   },
   {
     "from": "/agence/ile-de-france/75018-arrondissement-de-paris/paris/atelier-gmd/",

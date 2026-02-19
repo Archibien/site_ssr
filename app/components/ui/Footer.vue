@@ -20,21 +20,15 @@
             rel="noopener"
             class="flex flex-col w-full lg:w-auto items-center">
             <span class="mb-xs">👉</span>
-            <div class="flex items-center space-x-1">
+            <div class="flex items-start space-x-2">
               <span>Visitez</span>
-              <!-- <img
-                v-lazy="require('~/assets/logos/logo-blog-archibien-blanc.png')"
-                alt="Logo du blog Archibien"
-                class="h-8 w-auto"
-              /> -->
               <img
                 src="/img/logo-blog-archibien-blanc.png"
                 alt="Logo du blog Archibien"
-                format="webp"
                 loading="lazy"
-                fetch-priority="low"
-                class="h-8 w-auto"
-                height="32" />
+                height="32"
+                class="h-8"
+                fetch-priority="low" />
             </div>
           </a>
           <div class="flex items-center justify-center space-x-4 text-white w-full lg:w-auto">
@@ -90,6 +84,9 @@
               <NuxtLink to="/architectes/" no-prefetch class="font-semibold">
                 👉 Découvrez Archibien
               </NuxtLink>
+              <a href="https://archibien-4999873.hs-sites.com/test-landing" rel="noopener"
+                >Nos offres</a
+              >
               <a href="https://app.archibien.com/inscription/archi" rel="noopener">S'inscrire</a>
               <a href="https://app.archibien.com/" rel="noopener">Se connecter</a>
             </div>
@@ -97,6 +94,9 @@
           <div class="w-full lg:w-auto text-center lg:text-left">
             <p class="text-caption uppercase mb-m w-full">À propos d'archibien</p>
             <div class="space-y-4 flex flex-col">
+              <a href="https://share.google/2UUreY3oXjmr7CEXt" rel="noopener"
+                >Avis sur nos services</a
+              >
               <NuxtLink to="/a-propos/" no-prefetch> À propos d'Archibien </NuxtLink>
               <NuxtLink to="/contact/" no-prefetch> Nous contacter </NuxtLink>
               <a href="https://archibien.welcomekit.co/" target="_blank" rel="noopener"
@@ -124,6 +124,14 @@
           <div
             class="grid items-center gap-6 md:gap-4 grid-flow-col grid-rows-5 md:grid-rows-1 place-items-center place-content-center text-white">
             <p class="row-span-1 col-span-4 md:row-auto md:col-auto">Nos partenaires :</p>
+
+            <a target="_blank" href="http://www.hec.fr/" rel="noreferrer noopener">
+              <img
+                src="/img/partners/Logo-Incubateur-HEC-Archibien.png"
+                alt="Logo Incubateur HEC Station F Paris"
+                loading="lazy"
+                class="h-m lg:h-14" />
+            </a>
             <a target="_blank" href="https://www.levillagebyca.com" rel="noreferrer noopener">
               <img
                 src="/img/partners/Logo-LeVillageAlumni-Archibien.svg"
@@ -156,20 +164,6 @@
               <img
                 src="/img/partners/Logo-LaFrenchTech-Archibien.svg"
                 alt="Logo La French Tech"
-                loading="lazy"
-                class="h-m lg:h-14" />
-            </a>
-            <a target="_blank" href="https://1kubator.com/" rel="noreferrer noopener">
-              <img
-                src="/img/partners/Logo-1Kubator-Archibien.png"
-                alt="Logo 1KUBATOR"
-                loading="lazy"
-                class="h-m lg:h-14" />
-            </a>
-            <a target="_blank" href="http://www.hec.fr/" rel="noreferrer noopener">
-              <img
-                src="/img/partners/Logo-Incubateur-HEC-Archibien.png"
-                alt="Logo Incubateur HEC Station F Paris"
                 loading="lazy"
                 class="h-m lg:h-14" />
             </a>

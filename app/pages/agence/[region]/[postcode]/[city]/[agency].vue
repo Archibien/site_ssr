@@ -3,13 +3,11 @@ import { departments } from '~/data/departments'
 import type { AgencyDetails } from '~/types/agency'
 
 const route = useRoute()
-const config = useRuntimeConfig()
 const agencyUrl = route.path
 const { data: agency, error } = await useFetch<AgencyDetails>('/api/agency', {
   server: true,
   query: { url: agencyUrl },
 })
-
 /**
  * Handle deleted agencies correctly (SEO)
  */
@@ -27,8 +25,13 @@ if (error.value) {
   })
 }
 const banner = shallowRef(
+  agency.value?.banner
+    ? agency?.value.banner.hd || agency?.value.banner.original
+    : '/img/placeholders/logo-archibien.jpg'
+)
+const logo = shallowRef(
   agency.value?.is_subscribed
-    ? agency?.value.logo.default || agency?.value.logo.original
+    ? agency?.value.logo?.default || agency?.value.logo?.original
     : '/img/placeholders/logo-archibien.jpg'
 )
 useSeoMeta({
@@ -39,10 +42,32 @@ useSeoMeta({
   ogImage: banner.value,
   twitterCard: 'summary_large_image',
 })
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: `${agency.value?.mention_first_name} ${agency.value?.mention_last_name}`,
+        jobTitle: 'Architecte',
+        worksFor: {
+          '@type': 'Organization',
+          name: agency.value?.mention_name,
+        },
+        // address: {
+        //   '@type': 'PostalAddress',
+        //   addressLocality: 'Nantes',
+        // },
+      }),
+    },
+  ],
+})
 
 const renderedAt = useState('rendered-at', () => new Date().toISOString())
 const depCode = ref('')
 const contactModalDisplayed = ref(false)
+const showMentions = ref(false)
 
 onMounted(async () => {
   // This is done on client only to avoid a hydration mismatch : on server side we can't know in advance
@@ -65,7 +90,7 @@ onMounted(async () => {
       <div
         class="absolute inset-0 bg-cover bg-no-repeat bg-center"
         :style="{
-          backgroundImage: `url(${agency?.banner.hd || agency?.banner.original})`,
+          backgroundImage: `url(${banner})`,
           zIndex: 1,
         }" />
     </div>
@@ -75,11 +100,11 @@ onMounted(async () => {
   <section class="w-full -mt-16 z-10 relative">
     <div class="mx-auto">
       <div class="highlight-top highlight-narrow bg-gray-200" />
-      <div class="py-l sm:py-xl px-4 sm:px-l text-center bg-gray-200">
+      <div class="py-10 px-4 sm:px-10 text-center bg-gray-200 sm:py-15">
         <div
-          class="mx-auto rounded-full shadow-sm w-20 h-20 sm:w-maximum sm:h-maximum mb-m overflow-hidden flex">
+          class="mx-auto rounded-full shadow-sm w-20 h-20 sm:w-30 sm:h-30 overflow-hidden flex mb-6">
           <img
-            :src="banner"
+            :src="logo"
             :alt="agency?.metadata.logo.alt"
             :title="agency?.metadata.logo.title"
             fetch-priority="high"
@@ -87,7 +112,7 @@ onMounted(async () => {
             height="120"
             class="object-cover" />
         </div>
-        <h1 class="font-semibold text-title-xl mb-xs text-darkblue">
+        <h1 class="font-semibold text-title-xl text-darkblue mb-3">
           {{ agency?.name }}
         </h1>
         <h2 class="text-darkblue text-title-l mb-l">
@@ -141,8 +166,28 @@ onMounted(async () => {
               variant="secondary"
               class="btn-block"
               @click="() => (contactModalDisplayed = true)">
-              Écrire à {{ agency.name }} !
+              Écrire à {{ agency?.name }} !
             </UiButtonIcon>
+            <template v-if="agency?.is_subscribed">
+              <UiButtonIcon
+                size="l"
+                icon="tel"
+                type="link"
+                variant="secondary"
+                class="btn-block archibien-contact archibien-phone"
+                :data-agence="agency.public_id"
+                data-type="phone"
+                :to="`tel:${agency.phone}`" />
+              <UiButtonIcon
+                size="l"
+                icon="mail"
+                type="link"
+                variant="secondary"
+                class="btn-block archibien-contact archibien-email"
+                :data-agence="agency.public_id"
+                data-type="email"
+                :to="`mailto:${agency.email}`" />
+            </template>
           </div>
         </div>
       </div>
@@ -183,9 +228,13 @@ onMounted(async () => {
       <h3 class="text-darkblue font-semibold text-title-l sm:mb-xs mb-2">
         Le book de {{ agency.name }}
       </h3>
-      <p class="text-gray-600 max-w-title">
+      <p class="text-gray-600 max-w-title" v-if="agency?.is_subscribed">
         Voici le book du cabinet {{ agency.name }}. Ce portfolio comprend une sélection de travaux
         et références de l'agence.
+      </p>
+      <p class="text-gray-600 max-w-title" v-else>
+        Voici le book de {{ agency.name }}. Ce portfolio comprend une sélection de travaux et
+        références de l'agence.
       </p>
 
       <div class="my-m sm:my-l grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
@@ -251,6 +300,15 @@ onMounted(async () => {
     <p class="text-gray-600 text-sm mt-s max-w-title">
       Pour nous signaler tout contenu déplacé ou offensant merci d'utiliser le formulaire de contact
       du site internet en précisant l'adresse web de cette page.
+    </p>
+    <button
+      @click="showMentions = !showMentions"
+      class="text-gray-600 text-sm mt-s max-w-title underline">
+      Mentions légales
+    </button>
+    <p :class="['text-gray-600 text-sm mt-s max-w-title', showMentions ? 'visible' : 'invisible']">
+      {{ agency?.mention_first_name }} {{ agency?.mention_last_name }} ({{ agency?.mention_name }})
+      a édité le contenu de cette page."
     </p>
   </div>
 
