@@ -308,7 +308,7 @@ onMounted(async () => {
     </button>
     <p :class="['text-gray-600 text-sm mt-s max-w-title', showMentions ? 'visible' : 'invisible']">
       {{ agency?.mention_first_name }} {{ agency?.mention_last_name }} ({{ agency?.mention_name }})
-      a édité le contenu de cette page."
+      a édité le contenu de cette page.
     </p>
   </div>
 
