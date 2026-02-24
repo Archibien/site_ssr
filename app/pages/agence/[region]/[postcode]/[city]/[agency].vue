@@ -69,6 +69,9 @@ const depCode = ref('')
 const contactModalDisplayed = ref(false)
 const showMentions = ref(false)
 
+// Load GTM on this page only because contact buttons need it
+const { loadGTM, consent } = useConsent()
+
 onMounted(async () => {
   // This is done on client only to avoid a hydration mismatch : on server side we can't know in advance
   // if we should keep the local/globalphone number or not
@@ -81,6 +84,15 @@ onMounted(async () => {
   }
   const department = departments[depCode.value]
   setPhone(department.phone)
+
+  if (consent.value === true) {
+    loadGTM()
+  }
+})
+
+// If the user changes their cookie conset when they are on this page, we need to load GTM if they just accepted
+watch(consent, (val) => {
+  if (val === true) loadGTM()
 })
 </script>
 
@@ -176,6 +188,7 @@ onMounted(async () => {
                 variant="secondary"
                 class="btn-block archibien-contact archibien-phone"
                 :data-agence="agency.public_id"
+                :data-label="agency.name"
                 data-type="phone"
                 :to="`tel:${agency.phone}`" />
               <UiButtonIcon
@@ -185,6 +198,7 @@ onMounted(async () => {
                 variant="secondary"
                 class="btn-block archibien-contact archibien-email"
                 :data-agence="agency.public_id"
+                :data-label="agency.name"
                 data-type="email"
                 :to="`mailto:${agency.email}`" />
             </template>

@@ -4,14 +4,16 @@
   <UiNavbar />
   <NuxtPage />
   <UiFooter />
+  <CookieBanner />
 </template>
 
 <script setup lang="ts">
+const route = useRoute()
+
 const description =
   'Un projet de construction, rénovation, extension ? Avec Archibien, trois architectes dessinent et chiffrent votre projet. Comparez, choisissez !'
 const img = '/img/logo-archibien.jpg'
 const title = 'Trois architectes dessinent votre projet'
-const route = useRoute()
 useSeoMeta({
   title,
   titleTemplate: '%s | Archibien',
