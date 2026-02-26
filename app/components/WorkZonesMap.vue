@@ -19,27 +19,6 @@ let circles: google.maps.Circle[] = []
 let currentZoom = 6
 
 /* ----------------------------------
-   Radius scaling logic
----------------------------------- */
-
-function scaleRadiusByZoom(baseRadius: number, zoom: number) {
-  // Tunable values — tweak once if needed
-  const minZoom = 5
-  const maxZoom = 10
-
-  const minScale = 0.6
-  const maxScale = 1.8
-
-  const clampedZoom = Math.min(Math.max(zoom, minZoom), maxZoom)
-
-  const t = (clampedZoom - minZoom) / (maxZoom - minZoom)
-
-  const scale = minScale + t * (maxScale - minScale)
-
-  return baseRadius * 200 * scale
-}
-
-/* ----------------------------------
    Map lifecycle
 ---------------------------------- */
 
@@ -64,12 +43,6 @@ onMounted(async () => {
     ],
   })
 
-  map.addListener('zoom_changed', () => {
-    if (!map) return
-    currentZoom = map.getZoom() ?? currentZoom
-    updateCircleRadii()
-  })
-
   renderCircles(google)
 })
 
@@ -83,57 +56,54 @@ watch(
 )
 
 /* ----------------------------------
+ * Helpers
+ * ---------------------------------- */
+
+const clearCircles = () => {
+  circles.forEach((circle) => circle.setMap(null))
+  circles = []
+}
+
+/* ----------------------------------
    Rendering logic
 ---------------------------------- */
 
-function renderCircles(google: typeof window.google) {
+const renderCircles = (google: typeof window.google) => {
   if (!map) return
 
-  // Clear previous circles
-  circles.forEach((c) => c.setMap(null))
-  circles = []
+  clearCircles()
 
   const bounds = new google.maps.LatLngBounds()
 
-  props.areas.forEach((area) => {
-    const center = new google.maps.LatLng(area.lat, area.lng)
-    bounds.extend(center)
-    const radius = scaleRadiusByZoom(area.radius, currentZoom)
+  props.areas.forEach((zone) => {
+    if (!zone.lat || !zone.lng) return
     const circle = new google.maps.Circle({
-      map,
-      center,
-      radius,
+      map: map!,
+      center: {
+        lat: Number(zone.lat),
+        lng: Number(zone.lng),
+      },
+      radius: zone.radius * 200,
       strokeColor: '#2563eb',
       strokeOpacity: 0.8,
       strokeWeight: 2,
-      fillColor: '#2563eb',
-      fillOpacity: 0.25,
+      fillColor: '#3b82f6',
+      fillOpacity: 0.15,
     })
 
     circles.push(circle)
+
+    // 🔑 THIS is the important part
+    const circleBounds = circle.getBounds()
+    if (circleBounds) {
+      bounds.union(circleBounds)
+    }
   })
 
+  // Fit map to all circle radii
   if (!bounds.isEmpty()) {
-    map.fitBounds(bounds, {
-      top: 40,
-      bottom: 40,
-      left: 40,
-      right: 40,
-    })
+    map.fitBounds(bounds)
   }
-
-  // fitBounds changes zoom → force radius update
-  currentZoom = map.getZoom() ?? currentZoom
-  updateCircleRadii()
-}
-
-function updateCircleRadii() {
-  if (!map) return
-
-  circles.forEach((circle, index) => {
-    const baseRadius = props.areas[index].radius
-    circle.setRadius(scaleRadiusByZoom(baseRadius, currentZoom))
-  })
 }
 </script>
 
