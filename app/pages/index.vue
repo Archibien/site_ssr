@@ -72,7 +72,7 @@
       </h3>
     </div>
     <!-- Data is fetched server side so no Lazy here. What's important can be to lazy-load images. -->
-    <SlidersAgencies :agencies="data.agencies" class="mb-l" />
+    <SlidersAgencies :agencies="data?.agencies" class="mb-l" />
 
     <div class="app-container">
       <h3 class="text-darkblue font-semibold text-title-m max-w-[36rem] mb-m sm:mb-l">
@@ -80,7 +80,7 @@
       </h3>
     </div>
     <!-- Data is fetched server side so no Lazy here. What's important can be to lazy-load images. -->
-    <SlidersReferences :references="data.references" />
+    <SlidersReferences :references="data?.references" />
   </section>
 
   <SectionsContact class="mt-xl lg:mt-xxl" />

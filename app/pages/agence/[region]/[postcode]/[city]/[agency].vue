@@ -124,9 +124,16 @@ watch(consent, (val) => {
             height="120"
             class="object-cover" />
         </div>
+        <div>
         <h1 class="font-semibold text-title-xl text-darkblue mb-3">
           {{ agency?.name }}
         </h1>
+        <div
+          v-if="agency?.is_subscribed"
+          class="mt-xs inline-block mb-xs badge-active py-1 px-min sm:py-min sm:px-2 font-semibold text-blue bg-blue-100 rounded-md">
+          Membre vérifié
+        </div>
+      </div>
         <h2 class="text-darkblue text-title-l mb-l">
           {{ agency?.metadata.agency_title }}
         </h2>
