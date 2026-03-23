@@ -72,7 +72,7 @@ function googleBoundsToBbox(bounds: google.maps.LatLngBounds, precision = 2) {
 }
 
 function colorForType(type: Pin['pin_type']) {
-  return type === 'project' ? '#2469ff' : '#22204d'
+  return type === 'project' ? '#2469ff' : '#514dbd'
 }
 
 function setSearchMarker(position: google.maps.LatLng) {
@@ -90,8 +90,8 @@ function setSearchMarker(position: google.maps.LatLng) {
 }
 
 function clearFilters() {
-  selectedCategory.value = ''
-  selectedProject.value = ''
+  // selectedCategory.value = ''
+  // selectedProject.value = ''
 
   if (inputEl.value) inputEl.value.value = ''
 
@@ -383,9 +383,9 @@ watch([selectedCategory, selectedProject], () => {
 <template>
   <div class="map-wrapper">
     <div class="map-controls">
-      <input ref="inputEl" class="address-input" placeholder="Rechercher une adresse" />
+      <input ref="inputEl" class="address-input" placeholder="Vous pouvez indiquer l'adresse de votre projet, pour découvrir les agences locales et leur références dans votre zone" />
 
-      <select v-model="selectedProject" class="map-select">
+      <!-- <select v-model="selectedProject" class="map-select">
         <option value="">Tous les projets</option>
         <option v-for="project in tasks" :key="project.value" :value="project.value">
           {{ project.label }}
@@ -397,12 +397,12 @@ watch([selectedCategory, selectedProject], () => {
         <option v-for="category in categories" :key="category.value" :value="category.value">
           {{ category.label }}
         </option>
-      </select>
+      </select> -->
 
       <button
         class="map-clear"
         @click="clearFilters"
-        v-if="selectedCategory || selectedProject || (inputEl && inputEl.value)">
+        v-if="searchMarker">
         <svg xmlns="http://www.w3.org/2000/svg" class="size-6 text-blue" viewBox="0 0 20 20">
           <!-- Icon from HeroIcons by Refactoring UI Inc - https://github.com/tailwindlabs/heroicons/blob/master/LICENSE -->
           <path

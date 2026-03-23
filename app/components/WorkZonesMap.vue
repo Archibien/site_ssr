@@ -83,7 +83,7 @@ const renderCircles = (google: typeof window.google) => {
         lat: Number(zone.lat),
         lng: Number(zone.lng),
       },
-      radius: zone.radius * 200,
+      radius: 100 * 200,
       strokeColor: '#2563eb',
       strokeOpacity: 0.8,
       strokeWeight: 2,

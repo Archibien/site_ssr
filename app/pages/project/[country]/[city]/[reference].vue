@@ -155,7 +155,7 @@ const renderedAt = useState('rendered-at', () => new Date().toISOString())
           </ClientOnly>
         </div>
         <div class="mb-xxl sm:mb-xl">
-          <p v-if="data.reference.agency.is_subscribed" class="text-sm text-gray-500 mb-l sm:mb-xl">
+          <p v-if="data.reference.copyright_banner" class="text-sm text-gray-500 mb-l sm:mb-xl">
             Photo principale © {{ data.reference.copyright_banner }}
           </p>
           <h4 class="block text-title-s text-darkblue font-semibold mb-s md:mb-m">

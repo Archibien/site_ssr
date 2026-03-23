@@ -178,7 +178,8 @@ watch(consent, (val) => {
               variant="secondary"
               class="btn-block"
               @click="() => (contactModalDisplayed = true)">
-              Écrire à {{ agency?.name }} !
+              <!-- Écrire à {{ agency?.name }} ! -->
+              Parlez-nous de votre projet
             </UiButtonIcon>
             <template v-if="agency?.is_subscribed">
               <UiButtonIcon

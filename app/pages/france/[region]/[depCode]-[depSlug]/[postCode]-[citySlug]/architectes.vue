@@ -96,8 +96,9 @@ useSeoMeta({
   <div class="highlight-bottom bg-gray-200" />
 
   <!-- Map section -->
-  <section class="max-w-5xl mx-auto mt-xl lg:mt-xxl">
-    <div ref="mapContainer" style="min-height: 400px">
+  <section class="mt-xl lg:mt-xxl">
+    <h2 class="text-darkblue font-semibold text-title-m app-container">Découvrez les projets de nos archis et leurs projets près de chez vous</h2>
+    <div ref="mapContainer" class="max-w-5xl mx-auto mt-m" style="min-height: 400px">
       <ClientOnly>
         <MapView v-if="mapVisible" :initial-bounds="city.bounds" />
       </ClientOnly>
