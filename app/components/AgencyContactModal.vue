@@ -330,7 +330,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
           v-if="currentStep === 1"
           class="modal__content grow overflow-y-auto w-full bg-white mt-24 sm:mt-maximum px-2 sm:px-4">
           <form novalidate="true" @submit.prevent="goToStep2">
-            <UiAlert v-if="step1Errors" message="Merci de corriger les erreurs ci-dessous" />
+            <UiAlert v-if="step1Errors" message="Oup's une petite erreur est à corriger ;) Si vous n'y arrivez pas, vous pouvez nous appeler au numéro indiqué sur la page de l'agence, ou nous écrire sur bonjour@archibien.com, merci !" />
 
             <p class="font-semibold mb-xs text-gray-700">Vous souhaitez faire</p>
             <div class="grid grid-cols-2 gap-4">
@@ -445,8 +445,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
           v-else-if="currentStep === 2"
           class="modal__content grow overflow-y-auto w-full bg-white mt-24 sm:mt-maximum px-2 sm:px-4">
           <form novalidate="true" @submit.prevent="submit">
-            <UiAlert v-if="step2Errors" message="Merci de corriger les erreurs ci-dessous" />
-
+            <UiAlert v-if="step2Errors" message="Oup's une petite erreur est à corriger ;) Si vous n'y arrivez pas, vous pouvez nous appeler au numéro indiqué sur la page de l'agence, ou nous écrire sur bonjour@archibien.com, merci !" />
             <div class="grid grid-cols-2 gap-4">
               <div>
                 <p class="form-label">Prénom</p>
