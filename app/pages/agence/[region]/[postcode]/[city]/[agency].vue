@@ -172,20 +172,11 @@ watch(consent, (val) => {
           </h4>
           <div
             class="flex flex-col lg:flex-row items-center lg:space-x-2 space-x-0 space-y-2 lg:space-y-0">
-            <UiButton
-              size="l"
-              type="link"
-              to="https://meetings.hubspot.com/simon18/rdv-telephonique-20-minutes"
-              class="btn-block">
-              Prenons rendez-vous
-            </UiButton>
             <UiButtonIcon
               size="l"
               icon="message"
-              variant="secondary"
               class="btn-block"
               @click="() => (contactModalDisplayed = true)">
-              <!-- Écrire à {{ agency?.name }} ! -->
               Parlez-nous de votre projet
             </UiButtonIcon>
             <template v-if="agency?.is_subscribed">
@@ -237,10 +228,14 @@ watch(consent, (val) => {
         <h4 class="font-semibold text-title-s text-darkblue sm:mb-xs mb-2">
           Compétences particulières
         </h4>
-        <p class="mb-m sm:mb-l text-gray-600">
+        <p class="text-gray-600 mb-m sm:mb-l">
           {{ agency.tags.join(', ') }}
         </p>
-        <p>Debug (rendered at): {{ renderedAt }}</p>
+        <div class="flex items-center gap-2 mb-s sm:mb-m" v-if="agency?.is_subscribed">
+            <a :href="agency?.website" v-if="agency?.website" target="_blank"><IconsWebsite class="h-7 w-7 hover:text-link" :font-controlled="false"  /></a>
+            <a :href="agency?.facebook" v-if="agency?.facebook" target="_blank"><IconsFacebook class="h-6 w-6 hover:fill-link" :font-controlled="false" /></a>
+            <a :href="agency?.instagram" v-if="agency?.instagram" target="_blank"><IconsInstagram class="h-6 w-6 hover:fill-link" :font-controlled="false" /></a>
+          </div>
       </div>
     </div>
   </section>
@@ -329,8 +324,8 @@ watch(consent, (val) => {
       Mentions légales
     </button>
     <p :class="['text-gray-600 text-sm mt-s max-w-title', showMentions ? 'visible' : 'invisible']">
-      {{ agency?.mention_first_name }} {{ agency?.mention_last_name }} ({{ agency?.mention_name }})
-      a édité le contenu de cette page.
+      {{ agency?.mention_first_name }} {{ agency?.mention_last_name }} et son équipe ({{ agency?.mention_name }})
+      ont édité le contenu de cette page.
     </p>
   </div>
 

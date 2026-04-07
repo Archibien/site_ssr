@@ -96,7 +96,6 @@ async function initAutocomplete() {
 
   autocomplete.addListener('place_changed', () => {
     const place = autocomplete?.getPlace()
-    console.log('places !')
     if (!place?.geometry?.location) return
 
     form.value.project.address = {

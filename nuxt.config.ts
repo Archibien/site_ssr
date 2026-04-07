@@ -14,7 +14,6 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     vercelBypassToken: '', // private
-    apiToken: '', // private
     apiSecret: '', // private
     public: {
       apiBase: '',

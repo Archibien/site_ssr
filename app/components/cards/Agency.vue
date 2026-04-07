@@ -3,7 +3,7 @@
     <div class="mx-auto rounded-full mb-4 overflow-hidden size-[60px] sm:size-[100px]">
       <img
         :src="
-          data.is_subscribed
+          data.is_subscribed && data.logo
             ? data.logo.default || data.logo.original
             : '/img/placeholders/logo-archibien.jpg'
         "

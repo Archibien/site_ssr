@@ -3,7 +3,7 @@ export default defineEventHandler(async (event) => {
 
   setHeader(event, 'Cache-Control', 'public, s-maxage=86400')
 
-  return await $fetch(`${config.public.apiBase}/agencies`, {
+  return await $fetch(`${config.public.apiBase}/agencies/`, {
     headers: {
       Accept: 'application/json',
       'X-Public-Api-Key': config.apiSecret,

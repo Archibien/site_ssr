@@ -76,6 +76,9 @@ export interface AgencyDetails {
   similar_agencies: AgencyWithMeta[]
   city: string
   is_subscribed: bool
+  website: string
+  facebook: string
+  instagram: string
   metadata: {
     agency_title: string
     map_title: string
