@@ -5,7 +5,7 @@
         class="relative flex items-center justify-between h-12 md:h-17 max-w-screen-lg 2xl:max-w-screen-xl mx-auto">
         <div class="flex-1 flex items-center sm:items-stretch justify-between">
           <NuxtLink class="shrink-0 flex items-center" to="/">
-            <Logo class="block w-auto h-4" />
+            <Logo class="block w-auto" />
           </NuxtLink>
           <div class="hidden md:flex md:ml-6 items-center space-x-6">
             <a :href="getPhoneLink()" class="py-2 font-semibold text-blue">{{
