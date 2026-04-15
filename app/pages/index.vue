@@ -97,9 +97,28 @@ type Response = {
   references: ReferenceWithMeta[]
 }
 // key: This prevents Nuxt from accidentally reusing or re-triggering fetches across routes.
-const { data } = await useAsyncData<Response>(`carousels:home`, () => $fetch('/api/home'), {
-  server: true,
-})
+// const { data } = await useAsyncData<Response>(`carousels:home`, () => $fetch('/api/home'), {
+//   server: true,
+// })
+const { data } = await useAsyncData<Response>(
+  `carousels:home`,
+  () => $fetch('/api/home'),
+  {
+    server: true, // keeps SSR for SEO
+    getCachedData(key, nuxtApp) {
+      const cached = nuxtApp.payload.data[key]
+      if (!cached?._fetchedAt) return undefined // no cache, fetch
+
+      const age = Date.now() - cached._fetchedAt
+      if (age < 60 * 60 * 1000) return cached // still fresh if < 1h, use cache
+
+      return undefined // expired, refetch
+    },
+    transform(data) {
+      return { ...data, _fetchedAt: Date.now() }
+    },
+  }
+)
 
 // Client-side map logic
 // const mapContainer = ref<HTMLElement | null>(null)
