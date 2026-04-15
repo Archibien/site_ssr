@@ -276,7 +276,7 @@ const renderedAt = useState('rendered-at', () => new Date().toISOString())
             {{ data.reference.city }}
           </NuxtLink>
         </template>
-        <p>Debug (rendered at) : {{ renderedAt }}</p>
+        <!-- <p>Debug (rendered at) : {{ renderedAt }}</p> -->
       </div>
     </div>
   </section>
