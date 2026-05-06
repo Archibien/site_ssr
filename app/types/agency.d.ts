@@ -43,6 +43,12 @@ export interface AgencyDetailedWorkZone {
   radius: number
 }
 
+export interface AgencyRating {
+  first_name: string
+  last_name: string
+  comment: string
+}
+
 export interface AgencyDetails {
   name: string
   logo?: {
@@ -74,11 +80,13 @@ export interface AgencyDetails {
   references: ReferenceWithMeta[]
   dep_code: string
   similar_agencies: AgencyWithMeta[]
+  ratings?: AgencyRating[]
   city: string
   is_subscribed: bool
   website: string
   facebook: string
   instagram: string
+  linkedin: string
   metadata: {
     agency_title: string
     map_title: string

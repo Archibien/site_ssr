@@ -235,6 +235,7 @@ watch(consent, (val) => {
             <a :href="agency?.website" v-if="agency?.website" target="_blank"><IconsWebsite class="h-7 w-7 hover:text-link" :font-controlled="false"  /></a>
             <a :href="agency?.facebook" v-if="agency?.facebook" target="_blank"><IconsFacebook class="h-6 w-6 hover:fill-link" :font-controlled="false" /></a>
             <a :href="agency?.instagram" v-if="agency?.instagram" target="_blank"><IconsInstagram class="h-6 w-6 hover:fill-link" :font-controlled="false" /></a>
+            <a :href="agency?.linkedin" v-if="agency?.linkedin" target="_blank"><IconsLinkedIn class="h-6 w-6 hover:fill-link" :font-controlled="false" /></a>
           </div>
       </div>
     </div>
@@ -274,15 +275,22 @@ watch(consent, (val) => {
     <div class="highlight-bottom bg-gray-200" />
   </section>
 
+  <section v-if="agency.ratings && agency.ratings.length > 0" class="mt-xl lg:mt-xxl">
+    <div class="app-container mb-m sm:mb-l">
+      <h2 class="text-darkblue font-semibold text-title-l mb-2">Ils recommandent cette agence</h2>
+    </div>
+    <SlidersRatings :ratings="agency.ratings" class="mb-m sm:mb-l" />
+  </section>
+
   <section v-if="agency.similar_agencies.length > 0" class="mt-xl lg:mt-xxl">
     <div class="app-container">
-      <h2 class="text-darkblue font-semibold text-title-l mb-2">Besoin d'inspiration ?</h2>
+      <h2 class="text-darkblue font-semibold text-title-l mb-2">Besoin d’inspiration ?</h2>
       <p class="text-gray-600 mb-l max-w-[36rem]">
         Nos dizaines d’architectes partenaires sont sélectionnés pour la qualité de leur travail, en
-        conception et en maîtrise d'œuvre, et interviennent sur tous types de projets.
+        conception et en maîtrise d’œuvre, et interviennent sur tous types de projets.
       </p>
       <h4 class="font-semibold text-title-m text-darkblue mb-m sm:mb-l">
-        Quelques agences d'architecture similaires à {{ agency.name }}
+        Quelques agences d’architecture similaires à {{ agency.name }}
       </h4>
     </div>
     <SlidersAgencies :agencies="agency.similar_agencies" class="mb-m sm:mb-l" />
