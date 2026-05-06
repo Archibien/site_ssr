@@ -277,7 +277,7 @@ watch(consent, (val) => {
 
   <section v-if="agency.ratings && agency.ratings.length > 0" class="mt-xl lg:mt-xxl">
     <div class="app-container mb-m sm:mb-l">
-      <h2 class="text-darkblue font-semibold text-title-l mb-2">Ils recommandent cette agence</h2>
+      <h2 class="text-darkblue font-semibold text-title-l mb-2">Ils recommandent cette agence ⭐️⭐️⭐️⭐️⭐</h2>
     </div>
     <SlidersRatings :ratings="agency.ratings" class="mb-m sm:mb-l" />
   </section>

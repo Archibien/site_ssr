@@ -3,7 +3,7 @@ export const useConsent = () => {
     sameSite: 'lax',
     maxAge: 60 * 60 * 24 * 180,
   })
-  const bannerVisible = computed(() => consent.value === undefined)
+  const bannerVisible = computed(() => consent.value == null)
 
   const grantConsent = () => {
     consent.value = true

@@ -14,8 +14,6 @@ export default defineNuxtPlugin(() => {
   document.head.appendChild(script)
 
   // 3. Default consent denied
-  // Google recommends this to delay measurement slightly while waiting for consent interaction,
-  // this reduce premature pings
   gtag('consent', 'default', {
     ad_storage: 'denied',
     analytics_storage: 'denied',
@@ -32,4 +30,15 @@ export default defineNuxtPlugin(() => {
 
   // expose globally
   window.gtag = gtag
+
+  // 5. Restore consent for returning visitors who already accepted
+  const existingConsent = useCookie('cookie_consent')
+  if (existingConsent.value === true) {
+    gtag('consent', 'update', {
+      ad_storage: 'granted',
+      analytics_storage: 'granted',
+      ad_user_data: 'granted',
+      ad_personalization: 'granted',
+    })
+  }
 })
