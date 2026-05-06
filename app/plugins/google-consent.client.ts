@@ -32,8 +32,8 @@ export default defineNuxtPlugin(() => {
   window.gtag = gtag
 
   // 5. Restore consent for returning visitors who already accepted
-  const existingConsent = useCookie('cookie_consent')
-  if (existingConsent.value === true) {
+  const cookieValue = document.cookie.split(';').find(c => c.trim().startsWith('cookie_consent='))?.split('=')?.[1]
+  if (cookieValue === 'true') {
     gtag('consent', 'update', {
       ad_storage: 'granted',
       analytics_storage: 'granted',
